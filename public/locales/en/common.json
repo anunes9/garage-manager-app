@@ -1,0 +1,167 @@
+{
+  "pages": {
+    "login": {
+      "title": "Sign in to your account",
+      "signin": "Sign in",
+      "signup": "Sign up",
+      "divider": "or",
+      "fields": {
+        "email": "Email",
+        "password": "Password"
+      },
+      "errors": {
+        "validEmail": "Invalid email address"
+      },
+      "buttons": {
+        "submit": "Login",
+        "forgotPassword": "Forgot password?",
+        "noAccount": "Don’t have an account?",
+        "rememberMe": "Remember me"
+      }
+    },
+    "forgotPassword": {
+      "title": "Forgot your password?",
+      "fields": {
+        "email": "Email"
+      },
+      "errors": {
+        "validEmail": "Invalid email address"
+      },
+      "buttons": {
+        "submit": "Send reset instructions"
+      }
+    },
+    "register": {
+      "title": "Sign up for your account",
+      "fields": {
+        "email": "Email",
+        "password": "Password"
+      },
+      "errors": {
+        "validEmail": "Invalid email address"
+      },
+      "buttons": {
+        "submit": "Register",
+        "haveAccount": "Have an account?"
+      }
+    },
+    "updatePassword": {
+      "title": "Update password",
+      "fields": {
+        "password": "New Password",
+        "confirmPassword": "Confirm new password"
+      },
+      "errors": {
+        "confirmPasswordNotMatch": "Passwords do not match"
+      },
+      "buttons": {
+        "submit": "Update"
+      }
+    },
+    "error": {
+      "info": "You may have forgotten to add the {{action}} component to {{resource}} resource.",
+      "404": "Sorry, the page you visited does not exist.",
+      "resource404": "Are you sure you have created the {{resource}} resource.",
+      "backHome": "Back Home"
+    }
+  },
+  "actions": {
+    "list": "List",
+    "create": "Create",
+    "edit": "Edit",
+    "show": "Show"
+  },
+  "buttons": {
+    "create": "Create",
+    "save": "Save",
+    "logout": "Logout",
+    "delete": "Delete",
+    "edit": "Edit",
+    "cancel": "Cancel",
+    "confirm": "Are you sure?",
+    "filter": "Filter",
+    "clear": "Clear",
+    "refresh": "Refresh",
+    "show": "Show",
+    "undo": "Undo",
+    "import": "Import",
+    "clone": "Clone",
+    "notAccessTitle": "You don't have permission to access"
+  },
+  "warnWhenUnsavedChanges": "Are you sure you want to leave? You have unsaved changes.",
+  "notifications": {
+    "success": "Successful",
+    "error": "Error (status code: {{statusCode}})",
+    "undoable": "You have {{seconds}} seconds to undo",
+    "createSuccess": "Successfully created {{resource}}",
+    "createError": "There was an error creating {{resource}} (status code: {{statusCode}})",
+    "deleteSuccess": "Successfully deleted {{resource}}",
+    "deleteError": "Error when deleting {{resource}} (status code: {{statusCode}})",
+    "editSuccess": "Successfully edited {{resource}}",
+    "editError": "Error when editing {{resource}} (status code: {{statusCode}})",
+    "importProgress": "Importing: {{processed}}/{{total}}"
+  },
+  "loading": "Loading",
+  "tags": {
+    "clone": "Clone"
+  },
+  "dashboard": {
+    "title": "Dashboard"
+  },
+  "clients": {
+    "clients": "Clients",
+    "fields": {
+      "id": "Id",
+      "name": "Name",
+      "phone": "Phone",
+      "car": "Cars",
+      "created_at": "Created At",
+      "updatedAt": "Updated At"
+    },
+    "titles": {
+      "create": "Create Client",
+      "edit": "Edit Client",
+      "list": "Clients",
+      "show": "Show Client"
+    }
+  },
+  "cars": {
+    "cars": "Cars",
+    "fields": {
+      "id": "Id",
+      "brand": "Brand",
+      "model": "Model",
+      "plate": "License Plate",
+      "client": "Client",
+      "updatedAt": "Updated At",
+      "created_at": "Created At"
+    },
+    "titles": {
+      "create": "Create Car",
+      "edit": "Edit Car",
+      "list": "Cars",
+      "show": "Show Car"
+    }
+  },
+  "documentTitle": {
+    "default": "Garage Manager",
+    "suffix": " | Garage Manager",
+    "clients": {
+      "list": "Clients | Garage Manager",
+      "show": "#{{id}} Show Client | Garage Manager",
+      "edit": "#{{id}} Edit Client | Garage Manager",
+      "create": "Create new Client | Garage Manager",
+      "clone": "#{{id}} Clone Client | Garage Manager"
+    },
+    "cars": {
+      "list": "Cars | Garage Manager",
+      "show": "#{{id}} Show Car | Garage Manager",
+      "edit": "#{{id}} Edit Car | Garage Manager",
+      "create": "Create new Car | Garage Manager",
+      "clone": "#{{id}} Clone Car | Garage Manager"
+    }
+  },
+  "table": {
+    "actions": "Actions"
+  }
+}

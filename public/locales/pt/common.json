@@ -1,0 +1,167 @@
+{
+  "pages": {
+    "login": {
+      "title": "Faça login na sua conta",
+      "signin": "Entrar",
+      "signup": "Registar",
+      "divider": "ou",
+      "fields": {
+        "email": "Email",
+        "password": "Senha"
+      },
+      "errors": {
+        "validEmail": "Endereço de email invalido"
+      },
+      "buttons": {
+        "submit": "Submeter",
+        "forgotPassword": "Esquecei-me da senha?",
+        "noAccount": "Não tem conta?",
+        "rememberMe": "Lembrar-me"
+      }
+    },
+    "forgotPassword": {
+      "title": "Esquecei-me da senha?",
+      "fields": {
+        "email": "Email"
+      },
+      "errors": {
+        "validEmail": "Endereço de email invalido"
+      },
+      "buttons": {
+        "submit": "Enviar instruções de redefinição"
+      }
+    },
+    "register": {
+      "title": "Registar uma conta",
+      "fields": {
+        "email": "Email",
+        "password": "Senha"
+      },
+      "errors": {
+        "validEmail": "Endereço de email invalido"
+      },
+      "buttons": {
+        "submit": "Registo",
+        "haveAccount": "Registar uma conta?"
+      }
+    },
+    "updatePassword": {
+      "title": "Atualizar senha",
+      "fields": {
+        "password": "Nova Senha",
+        "confirmPassword": "Confirme a nova senha"
+      },
+      "errors": {
+        "confirmPasswordNotMatch": "As senhas não coincidem"
+      },
+      "buttons": {
+        "submit": "Atualizar"
+      }
+    },
+    "error": {
+      "404": "Desculpe, a página não existe.",
+      "info": "Pode ter esquecido de adicionar o {{action}} componente para {{resource}} recurso.",
+      "resource404": "Tem certeza de que criou o {{resource}} recurso.",
+      "backHome": "De volta para trás"
+    }
+  },
+  "actions": {
+    "list": "Lista",
+    "create": "Criar",
+    "edit": "Editar",
+    "show": "Mostrar"
+  },
+  "buttons": {
+    "create": "Criar",
+    "save": "Guardar",
+    "logout": "Sair",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "cancel": "Cancelar",
+    "confirm": "Tem a certeza?",
+    "filter": "Filtro",
+    "clear": "Limpar",
+    "refresh": "Atualizar",
+    "show": "Mostrar",
+    "undo": "Desfazer",
+    "import": "Importar",
+    "clone": "Duplicar",
+    "notAccessTitle": "Não tem permissão para aceder"
+  },
+  "warnWhenUnsavedChanges": "Tem certeza que quer sair? ",
+  "notifications": {
+    "success": "Bem-sucedido",
+    "error": "Erro (código de status: {{statusCode}})",
+    "undoable": "Tem {{seconds}} segundos para desfazer",
+    "createSuccess": "Criado com sucesso {{resource}}",
+    "createError": "Ocorreu um erro ao criar {{resource}} (código de estado: {{statusCode}})",
+    "deleteSuccess": "Eliminado com sucesso {{resource}}",
+    "deleteError": "Erro ao eliminar {{resource}} (código de estado: {{statusCode}})",
+    "editSuccess": "Editado com sucesso {{resource}}",
+    "editError": "Erro ao editar {{resource}} (código de estado: {{statusCode}})",
+    "importProgress": "Importando: {{processed}}/{{total}}"
+  },
+  "loading": "Carregando",
+  "tags": {
+    "clone": "Duplicar"
+  },
+  "dashboard": {
+    "title": "Painel"
+  },
+  "clients": {
+    "clients": "Clientes",
+    "fields": {
+      "id": "Id",
+      "name": "Nome",
+      "phone": "Telone",
+      "car": "Carros",
+      "created_at": "Created At",
+      "updatedAt": "Updated At"
+    },
+    "titles": {
+      "create": "Criar Cliente",
+      "edit": "Editar Cliente",
+      "list": "Clientes",
+      "show": "Mostrar Cliente"
+    }
+  },
+  "cars": {
+    "cars": "Cars",
+    "fields": {
+      "id": "Id",
+      "brand": "Marca",
+      "model": "Modelo",
+      "plate": "Matricula",
+      "cliente": "Cliente",
+      "updatedAt": "Updated At",
+      "created_at": "Created At"
+    },
+    "titles": {
+      "create": "Criar Carrro",
+      "edit": "Editar Carrro",
+      "list": "Carros",
+      "show": "Mostrar Carrro"
+    }
+  },
+  "documentTitle": {
+    "default": "Garage Manager",
+    "suffix": " | Garage Manager",
+    "clients": {
+      "list": "Clientes | Garage Manager",
+      "show": "#{{id}} Mostrar Cliente | Garage Manager",
+      "edit": "#{{id}} Editar Cliente | Garage Manager",
+      "create": "Criar novo Cliente | Garage Manager",
+      "clone": "#{{id}} Clone Cliente | Garage Manager"
+    },
+    "cars": {
+      "list": "Carros | Garage Manager",
+      "show": "#{{id}} Mostrar Carrro | Garage Manager",
+      "edit": "#{{id}} Editar Carrro | Garage Manager",
+      "create": "Criar novo Carrro | Garage Manager",
+      "clone": "#{{id}} Clone Carrro | Garage Manager"
+    }
+  },
+  "table": {
+    "actions": "Ações"
+  }
+}
