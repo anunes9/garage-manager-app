@@ -1,25 +1,25 @@
-import { Authenticated } from "@refinedev/core";
+import { Authenticated } from "@refinedev/core"
 import {
   AuthPage,
   ErrorComponent,
   ThemedLayoutV2,
   ThemedTitleV2,
-} from "@refinedev/mantine";
+} from "@refinedev/mantine"
 import {
   CatchAllNavigate,
   NavigateToResource,
-} from "@refinedev/react-router-v6";
-import { Outlet, Route, Routes } from "react-router-dom";
-import { AppIcon } from "./components/app-icon";
-import { Header } from "./components/header";
-import { ClientList } from "./pages/clients/list";
-import { ClientCreate } from "./pages/clients/create";
-import { ClientEdit } from "./pages/clients/edit";
-import { ClientShow } from "./pages/clients/show";
-import { CarList } from "./pages/cars/list";
-import { CarCreate } from "./pages/cars/create";
-import { CarEdit } from "./pages/cars/edit";
-import { CarShow } from "./pages/cars/show";
+} from "@refinedev/react-router-v6"
+import { Outlet, Route, Routes } from "react-router-dom"
+import { AppIcon } from "./components/app-icon"
+import { Header } from "./components/header"
+import { ClientList } from "./pages/clients/list"
+import { ClientCreate } from "./pages/clients/create"
+import { ClientEdit } from "./pages/clients/edit"
+import { ClientShow } from "./pages/clients/show"
+import { CarList } from "./pages/cars/list"
+import { CarCreate } from "./pages/cars/create"
+import { CarEdit } from "./pages/cars/edit"
+import { CarShow } from "./pages/cars/show"
 
 export const AppRoutes = () => (
   <Routes>
@@ -80,7 +80,7 @@ export const AppRoutes = () => (
             }
             formProps={{
               initialValues: {
-                email: "john@dow.com",
+                email: "john@doe.com",
                 password: "Password1!",
               },
             }}
@@ -93,4 +93,4 @@ export const AppRoutes = () => (
       />
     </Route>
   </Routes>
-);
+)

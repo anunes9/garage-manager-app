@@ -19,4 +19,20 @@ export const resources = [
       canDelete: true,
     },
   },
-];
+]
+
+export type Client = {
+  $id?: string
+  id: string
+  name: string
+  phone: string
+  cars?: Car[]
+}
+
+export type Car = {
+  id: string
+  brand: string
+  model: string
+  plate: string
+  client: Client
+}

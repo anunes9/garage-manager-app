@@ -1,41 +1,41 @@
-import { AppwriteException } from "@refinedev/appwrite";
-import { AuthBindings } from "@refinedev/core";
+import { AppwriteException } from "@refinedev/appwrite"
+import { AuthBindings } from "@refinedev/core"
 // import { v4 as uuidv4 } from "uuid";
-import { account } from "./utility/appwriteClient";
+import { account } from "./utility/appwriteClient"
 
 export const authProvider: AuthBindings = {
   login: async ({ email, password }) => {
     try {
-      await account.createEmailSession(email, password);
+      await account.createEmailSession(email, password)
       return {
         success: true,
         redirectTo: "/",
-      };
+      }
     } catch (error) {
-      const { type, message, code } = error as AppwriteException;
+      const { type, message, code } = error as AppwriteException
       return {
         success: false,
         error: {
           message,
           name: `${code} - ${type}`,
         },
-      };
+      }
     }
   },
   logout: async () => {
     try {
-      await account.deleteSession("current");
+      await account.deleteSession("current")
     } catch (error: any) {
       return {
         success: false,
         error,
-      };
+      }
     }
 
     return {
       success: true,
       redirectTo: "/login",
-    };
+    }
   },
   // register: async ({ email, password }) => {
   //   try {
@@ -56,17 +56,17 @@ export const authProvider: AuthBindings = {
   //   }
   // },
   onError: async (error) => {
-    console.error(error);
-    return { error };
+    console.error(error)
+    return { error }
   },
   check: async () => {
     try {
-      const session = await account.get();
+      const session = await account.get()
 
       if (session) {
         return {
           authenticated: true,
-        };
+        }
       }
     } catch (error: any) {
       return {
@@ -74,7 +74,7 @@ export const authProvider: AuthBindings = {
         error: error,
         logout: true,
         redirectTo: "/login",
-      };
+      }
     }
 
     return {
@@ -85,16 +85,16 @@ export const authProvider: AuthBindings = {
       },
       logout: true,
       redirectTo: "/login",
-    };
+    }
   },
   getPermissions: async () => null,
   getIdentity: async () => {
-    const user = await account.get();
+    const user = await account.get()
 
     if (user) {
-      return user;
+      return user
     }
 
-    return null;
+    return null
   },
-};
+}

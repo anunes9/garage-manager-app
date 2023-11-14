@@ -1,12 +1,15 @@
-import { Account, Appwrite, Storage } from "@refinedev/appwrite";
+import { Account, Appwrite, Storage } from "@refinedev/appwrite"
 
-const APPWRITE_URL = import.meta.env.VITE_APPWRITE_URL;
-const APPWRITE_PROJECT = import.meta.env.VITE_APPWRITE_PROJECT;
+console.log("env", import.meta.env.VITE_APPWRITE_URL)
+console.log("env", import.meta.env.VITE_APPWRITE_PROJECT)
 
-const appwriteClient = new Appwrite();
+const APPWRITE_URL = import.meta.env.VITE_APPWRITE_URL
+const APPWRITE_PROJECT = import.meta.env.VITE_APPWRITE_PROJECT
 
-appwriteClient.setEndpoint(APPWRITE_URL).setProject(APPWRITE_PROJECT);
-const account = new Account(appwriteClient);
-const storage = new Storage(appwriteClient);
+const appwriteClient = new Appwrite()
 
-export { appwriteClient, account, storage };
+appwriteClient.setEndpoint(APPWRITE_URL).setProject(APPWRITE_PROJECT)
+const account = new Account(appwriteClient)
+const storage = new Storage(appwriteClient)
+
+export { appwriteClient, account, storage }

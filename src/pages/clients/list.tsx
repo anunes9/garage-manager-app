@@ -1,24 +1,24 @@
-import React from "react";
+import React from "react"
 import {
   IResourceComponentsProps,
   useTranslate,
-  GetManyResponse,
   useMany,
-} from "@refinedev/core";
-import { useTable } from "@refinedev/react-table";
-import { ColumnDef, flexRender } from "@tanstack/react-table";
-import { ScrollArea, Table, Pagination, Group } from "@mantine/core";
+} from "@refinedev/core"
+import { useTable } from "@refinedev/react-table"
+import { ColumnDef, flexRender } from "@tanstack/react-table"
+import { ScrollArea, Table, Pagination, Group } from "@mantine/core"
 import {
   List,
   EditButton,
   ShowButton,
   DeleteButton,
   TagField,
-} from "@refinedev/mantine";
+} from "@refinedev/mantine"
+import { Car, Client } from "../../utility/resources"
 
 export const ClientList: React.FC<IResourceComponentsProps> = () => {
-  const translate = useTranslate();
-  const columns = React.useMemo<ColumnDef<any>[]>(
+  const translate = useTranslate()
+  const columns = React.useMemo<ColumnDef<Client>[]>(
     () => [
       {
         id: "id",
@@ -39,24 +39,16 @@ export const ClientList: React.FC<IResourceComponentsProps> = () => {
         id: "car",
         header: translate("clients.fields.car"),
         accessorKey: "car",
-        cell: function render({ getValue, table }) {
-          const meta = table.options.meta as {
-            carData: GetManyResponse;
-          };
-
-          const car = getValue<any[]>()?.map((item) => {
-            return meta.carData?.data?.find(
-              (resourceItems) => resourceItems.id === item
-            );
-          });
+        cell: function render({ getValue }) {
+          const cars = getValue() as Car[]
 
           return (
             <Group spacing="xs">
-              {car?.map((item, index) => (
-                <TagField key={index} value={item} />
+              {cars.map((item, index) => (
+                <TagField key={index} value={item.plate} />
               ))}
             </Group>
-          );
+          )
         },
       },
       {
@@ -70,12 +62,12 @@ export const ClientList: React.FC<IResourceComponentsProps> = () => {
               <EditButton hideText recordItemId={getValue() as string} />
               <DeleteButton hideText recordItemId={getValue() as string} />
             </Group>
-          );
+          )
         },
       },
     ],
     [translate]
-  );
+  )
 
   const {
     getHeaderGroups,
@@ -89,19 +81,19 @@ export const ClientList: React.FC<IResourceComponentsProps> = () => {
     },
   } = useTable({
     columns,
-  });
+  })
 
   const { data: carData } = useMany({
     resource: "cars",
     ids: [].concat(
       ...(tableData?.data?.map((item: any) =>
-        item?.car.map((c: any) => c["$id"])
+        item?.car.map((c: Client) => c["$id"])
       ) ?? [])
     ),
     queryOptions: {
       enabled: !!tableData?.data,
     },
-  });
+  })
 
   setOptions((prev) => ({
     ...prev,
@@ -109,7 +101,7 @@ export const ClientList: React.FC<IResourceComponentsProps> = () => {
       ...prev.meta,
       carData,
     },
-  }));
+  }))
 
   return (
     <List>
@@ -127,7 +119,7 @@ export const ClientList: React.FC<IResourceComponentsProps> = () => {
                           header.getContext()
                         )}
                     </th>
-                  );
+                  )
                 })}
               </tr>
             ))}
@@ -144,10 +136,10 @@ export const ClientList: React.FC<IResourceComponentsProps> = () => {
                           cell.getContext()
                         )}
                       </td>
-                    );
+                    )
                   })}
                 </tr>
-              );
+              )
             })}
           </tbody>
         </Table>
@@ -162,5 +154,5 @@ export const ClientList: React.FC<IResourceComponentsProps> = () => {
         onChange={setCurrent}
       />
     </List>
-  );
-};
+  )
+}
