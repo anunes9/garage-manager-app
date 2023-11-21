@@ -20,6 +20,10 @@ import { CarList } from "./pages/cars/list"
 import { CarCreate } from "./pages/cars/create"
 import { CarEdit } from "./pages/cars/edit"
 import { CarShow } from "./pages/cars/show"
+import { BudgetList } from "./pages/budgets/list"
+import { BudgetShow } from "./pages/budgets/show"
+import { BudgetCreate } from "./pages/budgets/create"
+import { BudgetEdit } from "./pages/budgets/edit"
 
 export const AppRoutes = () => (
   <Routes>
@@ -56,6 +60,12 @@ export const AppRoutes = () => (
         <Route path="create" element={<CarCreate />} />
         <Route path="edit/:id" element={<CarEdit />} />
         <Route path="show/:id" element={<CarShow />} />
+      </Route>
+      <Route path="/budgets">
+        <Route index element={<BudgetList />} />
+        <Route path="create" element={<BudgetCreate />} />
+        <Route path="edit/:id" element={<BudgetEdit />} />
+        <Route path="show/:id" element={<BudgetShow />} />
       </Route>
       <Route path="*" element={<ErrorComponent />} />
     </Route>

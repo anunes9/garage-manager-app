@@ -19,6 +19,16 @@ export const resources = [
       canDelete: true,
     },
   },
+  {
+    name: "budgets",
+    list: "/budgets",
+    create: "/budgets/create",
+    edit: "/budgets/edit/:id",
+    show: "/budgets/show/:id",
+    meta: {
+      canDelete: true,
+    },
+  },
 ]
 
 export type Client = {
@@ -35,4 +45,24 @@ export type Car = {
   model: string
   plate: string
   client: Client
+}
+
+export type Budget = {
+  date: string
+  total: number
+  car: Car
+  parts: Part[]
+}
+
+export type Part = {
+  name: string
+  quantity: number
+  price: number
+}
+
+export type PartForm = {
+  [x: string]: any
+  name: string
+  quantity: number
+  price: string
 }

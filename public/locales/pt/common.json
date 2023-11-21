@@ -144,6 +144,34 @@
       "show": "Mostrar Carrro"
     }
   },
+  "budgets": {
+    "budgets": "Orçamentos",
+    "fields": {
+      "id": "Id",
+      "date": "Data",
+      "total": "Total",
+      "part": "Material",
+      "car": "Carro",
+      "updatedAt": "Updated At",
+      "created_at": "Created At"
+    },
+    "titles": {
+      "create": "Criar Orçamento",
+      "edit": "Editar Orçamento",
+      "list": "Orçamentos",
+      "show": "Mostrar Orçamento"
+    }
+  },
+  "parts": {
+    "parts": "Material",
+    "add": "Adicionar Material",
+    "empty": "Sem Material",
+    "fields": {
+      "name": "Descriçāo",
+      "quantity": "Quantidade",
+      "price": "Preço"
+    }
+  },
   "documentTitle": {
     "default": "Garage Manager",
     "suffix": " | Garage Manager",

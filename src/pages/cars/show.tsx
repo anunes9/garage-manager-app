@@ -34,7 +34,7 @@ export const CarShow: React.FC<IResourceComponentsProps> = () => {
           "cars.fields.model"
         )}`}
       </Title>
-      <TextField value={`${record?.brand} ${record?.model}`} />
+      <TextField value={record ? `${record?.brand} ${record?.model}` : ""} />
 
       <Title my="xs" order={5}>
         {translate("cars.fields.plate")}

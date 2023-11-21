@@ -144,6 +144,34 @@
       "show": "Show Car"
     }
   },
+  "budgets": {
+    "budgets": "Budgets",
+    "fields": {
+      "id": "Id",
+      "date": "Date",
+      "total": "Total",
+      "part": "Parts",
+      "car": "Car",
+      "updatedAt": "Updated At",
+      "created_at": "Created At"
+    },
+    "titles": {
+      "create": "Create Budget",
+      "edit": "Edit Budget",
+      "list": "Budgets",
+      "show": "Show Budget"
+    }
+  },
+  "parts": {
+    "parts": "Parts",
+    "add": "Add Part",
+    "empty": "No Parts",
+    "fields": {
+      "name": "Description",
+      "quantity": "Quantity",
+      "price": "Price"
+    }
+  },
   "documentTitle": {
     "default": "Garage Manager",
     "suffix": " | Garage Manager",

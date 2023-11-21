@@ -39,7 +39,7 @@ export const CarCreate: React.FC<IResourceComponentsProps> = () => {
 
   return (
     <Create
-      isLoading={formLoading}
+      isLoading={formLoading || formLoading}
       saveButtonProps={saveButtonProps}
       footerButtons={() => (
         <Group>
@@ -78,6 +78,7 @@ export const CarCreate: React.FC<IResourceComponentsProps> = () => {
         mt="sm"
         label={translate("cars.fields.client")}
         required
+        // @ts-expect-error data is correct
         data={
           isLoading
             ? []

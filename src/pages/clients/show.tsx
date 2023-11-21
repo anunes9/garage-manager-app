@@ -69,7 +69,7 @@ export const ClientShow: React.FC<IResourceComponentsProps> = () => {
               onClick={() => navigate(`/cars/show/${item.id}`)}
               key={index}
             >
-              <Badge variant="outline" color="blue" size="xl">
+              <Badge variant="outline" color="blue" size="lg">
                 <Text fw={500}>{item.plate}</Text>
               </Badge>
 
