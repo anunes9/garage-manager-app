@@ -32,9 +32,11 @@ export const BudgetCreate: React.FC<IResourceComponentsProps> = () => {
     initialValues: {
       date: new Date().toISOString().split("T")[0],
       car: "",
+      km: 0,
       part: [] as unknown as PartForm,
     },
     validate: {
+      km: (value) => (value > 0 ? null : translate("pages.error.required")),
       car: (value) =>
         value.length < 2 ? translate("pages.error.required") : null,
       part: {
@@ -58,6 +60,7 @@ export const BudgetCreate: React.FC<IResourceComponentsProps> = () => {
 
       return {
         date: values.date,
+        km: values.km,
         total,
         car: values.car,
         part: values.part.map((p: PartForm) => ({
@@ -98,6 +101,13 @@ export const BudgetCreate: React.FC<IResourceComponentsProps> = () => {
                 label: c.plate,
               }))
         }
+      />
+
+      <NumberInput
+        mt="sm"
+        type="number"
+        label={translate("budgets.fields.km")}
+        {...getInputProps("km")}
       />
 
       <Text mt="md" fw={500} size="sm" color={errors?.part ? "red" : "black"}>

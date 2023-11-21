@@ -1,16 +1,9 @@
 import { IResourceComponentsProps, useTranslate } from "@refinedev/core"
-import {
-  DateField,
-  Edit,
-  TextField,
-  useForm,
-  useSelect,
-} from "@refinedev/mantine"
+import { DateField, Edit, TextField, useForm } from "@refinedev/mantine"
 import {
   TextInput,
   NumberInput,
   Group,
-  Select,
   Grid,
   Title,
   Badge,
@@ -19,7 +12,6 @@ import {
   ActionIcon,
   Button,
 } from "@mantine/core"
-import { Container } from "postcss"
 import { IconTrash } from "@tabler/icons"
 import { Part, PartForm } from "../../utility/resources"
 import { randomId } from "@mantine/hooks"
@@ -38,9 +30,11 @@ export const BudgetEdit: React.FC<IResourceComponentsProps> = () => {
   } = useForm({
     initialValues: {
       date: "",
+      km: 0,
       part: [] as unknown as PartForm,
     },
     validate: {
+      km: (value) => (value > 0 ? null : translate("pages.error.required")),
       part: {
         name: (value) =>
           value.length < 2 ? translate("pages.error.required") : null,
@@ -62,6 +56,7 @@ export const BudgetEdit: React.FC<IResourceComponentsProps> = () => {
 
       return {
         total,
+        km: values.km,
         part: values.part.map((p: PartForm) => ({
           name: p.name,
           quantity: p.quantity,
@@ -111,6 +106,13 @@ export const BudgetEdit: React.FC<IResourceComponentsProps> = () => {
           </Group>
         </Grid.Col>
       </Grid>
+
+      <NumberInput
+        mt="sm"
+        type="number"
+        label={translate("budgets.fields.km")}
+        {...getInputProps("km")}
+      />
 
       <Text mt="md" fw={500} size="sm" color={errors?.part ? "red" : "black"}>
         {translate("budgets.fields.part")}

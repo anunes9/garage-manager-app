@@ -152,8 +152,7 @@
       "total": "Total",
       "part": "Parts",
       "car": "Car",
-      "updatedAt": "Updated At",
-      "created_at": "Created At"
+      "km": "Km"
     },
     "titles": {
       "create": "Create Budget",

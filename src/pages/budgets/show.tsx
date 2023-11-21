@@ -47,6 +47,15 @@ export const BudgetShow: React.FC<IResourceComponentsProps> = () => {
 
         <Grid.Col span={1}>
           <Title my="xs" order={5}>
+            {translate("budgets.fields.km")}
+          </Title>
+        </Grid.Col>
+        <Grid.Col span={11}>
+          <TextField value={record?.km} />
+        </Grid.Col>
+
+        <Grid.Col span={1}>
+          <Title my="xs" order={5}>
             {translate("budgets.fields.car")}
           </Title>
         </Grid.Col>

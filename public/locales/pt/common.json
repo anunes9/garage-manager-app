@@ -152,8 +152,7 @@
       "total": "Total",
       "part": "Material",
       "car": "Carro",
-      "updatedAt": "Updated At",
-      "created_at": "Created At"
+      "km": "Km"
     },
     "titles": {
       "create": "Criar Orçamento",

@@ -90,8 +90,8 @@ export const AppRoutes = () => (
             }
             formProps={{
               initialValues: {
-                email: "john@doe.com",
-                password: "Password1!",
+                email: "",
+                password: "",
               },
             }}
           />

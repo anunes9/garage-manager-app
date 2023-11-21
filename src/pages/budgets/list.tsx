@@ -32,6 +32,11 @@ export const BudgetList: React.FC<IResourceComponentsProps> = () => {
         accessorKey: "date",
       },
       {
+        id: "km",
+        header: translate("budgets.fields.km"),
+        accessorKey: "km",
+      },
+      {
         id: "total",
         accessorKey: "total",
         header: translate("budgets.fields.total"),
