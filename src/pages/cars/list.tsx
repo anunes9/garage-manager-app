@@ -2,19 +2,16 @@ import React from "react"
 import { IResourceComponentsProps, useTranslate } from "@refinedev/core"
 import { useTable } from "@refinedev/react-table"
 import { ColumnDef, flexRender } from "@tanstack/react-table"
-import { ScrollArea, Table, Pagination, Group } from "@mantine/core"
-import { List, EditButton, ShowButton, DeleteButton } from "@refinedev/mantine"
+import { ScrollArea, Table, Pagination, LoadingOverlay } from "@mantine/core"
+import { List } from "@refinedev/mantine"
 import { Client } from "../../utility/resources"
+import { useNavigate } from "react-router-dom"
 
 export const CarList: React.FC<IResourceComponentsProps> = () => {
+  const navigate = useNavigate()
   const translate = useTranslate()
   const columns = React.useMemo<ColumnDef<Client>[]>(
     () => [
-      {
-        id: "id",
-        accessorKey: "id",
-        header: translate("cars.fields.id"),
-      },
       {
         id: "brand",
         accessorKey: "brand",
@@ -35,20 +32,20 @@ export const CarList: React.FC<IResourceComponentsProps> = () => {
         header: translate("cars.fields.client"),
         accessorKey: "client.name",
       },
-      {
-        id: "actions",
-        accessorKey: "id",
-        header: translate("table.actions"),
-        cell: function render({ getValue }) {
-          return (
-            <Group spacing="xs" noWrap>
-              <ShowButton hideText recordItemId={getValue() as string} />
-              <EditButton hideText recordItemId={getValue() as string} />
-              <DeleteButton hideText recordItemId={getValue() as string} />
-            </Group>
-          )
-        },
-      },
+      // {
+      //   id: "actions",
+      //   accessorKey: "id",
+      //   header: translate("table.actions"),
+      //   cell: function render({ getValue }) {
+      //     return (
+      //       <Group spacing="xs" noWrap>
+      //         <ShowButton hideText recordItemId={getValue() as string} />
+      //         <EditButton hideText recordItemId={getValue() as string} />
+      //         <DeleteButton hideText recordItemId={getValue() as string} />
+      //       </Group>
+      //     )
+      //   },
+      // },
     ],
     [translate]
   )
@@ -57,7 +54,12 @@ export const CarList: React.FC<IResourceComponentsProps> = () => {
     getHeaderGroups,
     getRowModel,
     setOptions,
-    refineCore: { setCurrent, pageCount, current },
+    refineCore: {
+      setCurrent,
+      pageCount,
+      current,
+      tableQueryResult: { isLoading },
+    },
   } = useTable({
     columns,
   })
@@ -71,49 +73,44 @@ export const CarList: React.FC<IResourceComponentsProps> = () => {
 
   return (
     <List>
+      <LoadingOverlay visible={isLoading} />
+
       <ScrollArea>
         <Table highlightOnHover>
           <thead>
             {getHeaderGroups().map((headerGroup) => (
               <tr key={headerGroup.id}>
-                {headerGroup.headers.map((header) => {
-                  return (
-                    <th key={header.id}>
-                      {!header.isPlaceholder &&
-                        flexRender(
-                          header.column.columnDef.header,
-                          header.getContext()
-                        )}
-                    </th>
-                  )
-                })}
+                {headerGroup.headers.map((header) => (
+                  <th key={header.id}>
+                    {!header.isPlaceholder &&
+                      flexRender(
+                        header.column.columnDef.header,
+                        header.getContext()
+                      )}
+                  </th>
+                ))}
               </tr>
             ))}
           </thead>
           <tbody>
-            {getRowModel().rows.map((row) => {
-              return (
-                <tr key={row.id}>
-                  {row.getVisibleCells().map((cell) => {
-                    return (
-                      <td key={cell.id}>
-                        {flexRender(
-                          cell.column.columnDef.cell,
-                          cell.getContext()
-                        )}
-                      </td>
-                    )
-                  })}
-                </tr>
-              )
-            })}
+            {getRowModel().rows.map((row) => (
+              <tr key={row.id}>
+                {row.getVisibleCells().map((cell) => (
+                  <td
+                    key={cell.id}
+                    onClick={() => navigate(`show/${row.original.id}`)}
+                  >
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  </td>
+                ))}
+              </tr>
+            ))}
           </tbody>
         </Table>
       </ScrollArea>
 
-      <br />
-
       <Pagination
+        pt="lg"
         position="right"
         total={pageCount}
         page={current}

@@ -133,7 +133,7 @@
       "brand": "Marca",
       "model": "Modelo",
       "plate": "Matricula",
-      "cliente": "Cliente",
+      "client": "Cliente",
       "updatedAt": "Updated At",
       "created_at": "Created At"
     },

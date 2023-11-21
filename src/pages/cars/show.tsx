@@ -4,7 +4,7 @@ import {
   useTranslate,
 } from "@refinedev/core"
 import { Show, TextField } from "@refinedev/mantine"
-import { Title } from "@mantine/core"
+import { Group, Title } from "@mantine/core"
 
 export const CarShow: React.FC<IResourceComponentsProps> = () => {
   const translate = useTranslate()
@@ -14,20 +14,27 @@ export const CarShow: React.FC<IResourceComponentsProps> = () => {
   const record = data?.data
 
   return (
-    <Show isLoading={isLoading}>
-      <Title my="xs" order={5}>
-        {translate("cars.fields.id")}
-      </Title>
-      <TextField value={record?.id} />
+    <Show
+      isLoading={isLoading}
+      title={
+        <Title order={3}>
+          {isLoading ? translate("cars.titles.show") : record?.plate}
+        </Title>
+      }
+    >
+      <Group>
+        <Title my="xs" order={5}>
+          {translate("cars.fields.id")}
+        </Title>
+        <TextField value={record?.id} />
+      </Group>
 
       <Title my="xs" order={5}>
-        {translate("cars.fields.brand")}
+        {`${translate("cars.fields.brand")} / ${translate(
+          "cars.fields.model"
+        )}`}
       </Title>
-      <TextField value={record?.brand} />
-      <Title my="xs" order={5}>
-        {translate("cars.fields.model")}
-      </Title>
-      <TextField value={record?.model} />
+      <TextField value={`${record?.brand} ${record?.model}`} />
 
       <Title my="xs" order={5}>
         {translate("cars.fields.plate")}

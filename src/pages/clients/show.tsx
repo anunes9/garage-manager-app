@@ -4,11 +4,13 @@ import {
   useTranslate,
   useMany,
 } from "@refinedev/core"
-import { Show, TextField, NumberField } from "@refinedev/mantine"
-import { Title, Stack, Text } from "@mantine/core"
+import { Show, TextField } from "@refinedev/mantine"
+import { Title, Stack, Text, Badge, Group, Grid } from "@mantine/core"
 import { Client } from "../../utility/resources"
+import { useNavigate } from "react-router-dom"
 
 export const ClientShow: React.FC<IResourceComponentsProps> = () => {
+  const navigate = useNavigate()
   const translate = useTranslate()
   const { queryResult } = useShow()
   const { data, isLoading } = queryResult
@@ -24,40 +26,58 @@ export const ClientShow: React.FC<IResourceComponentsProps> = () => {
   })
 
   return (
-    <Show isLoading={isLoading}>
-      <Title my="xs" order={5}>
-        {translate("clients.fields.id")}
-      </Title>
-      <TextField value={record?.id} />
+    <Show
+      isLoading={isLoading}
+      title={
+        <Title order={3}>
+          {isLoading ? translate("clients.titles.show") : record?.name}
+        </Title>
+      }
+    >
+      <Group>
+        <Title my="xs" order={5}>
+          {translate("clients.fields.id")}
+        </Title>
+        <TextField value={record?.id} />
+      </Group>
 
-      <Title my="xs" order={5}>
-        {translate("clients.fields.name")}
-      </Title>
-      <TextField value={record?.name} />
+      <Grid>
+        <Grid.Col span={6}>
+          <Title my="xs" order={5}>
+            {translate("clients.fields.name")}
+          </Title>
+          <TextField value={record?.name} />
+        </Grid.Col>
+        <Grid.Col span={6}>
+          <Title my="xs" order={5}>
+            {translate("clients.fields.phone")}
+          </Title>
+          <TextField value={record?.phone ?? ""} />
+        </Grid.Col>
+      </Grid>
 
-      <Title my="xs" order={5}>
-        {translate("clients.fields.phone")}
-      </Title>
-      <NumberField value={record?.phone ?? ""} />
-
-      <Title my="xs" order={5}>
+      <Title my="xs" order={5} pt="lg">
         {translate("clients.fields.car")}
       </Title>
 
       {carIsLoading && record?.car?.length ? (
         <>Loading...</>
       ) : (
-        <Stack>
+        <Stack align="start">
           {carData?.data?.map((item: any, index: number) => (
-            <Text fw={500} key={index}>
-              {item.plate}
+            <Group
+              onClick={() => navigate(`/cars/show/${item.id}`)}
+              key={index}
+            >
+              <Badge variant="outline" color="blue" size="xl">
+                <Text fw={500}>{item.plate}</Text>
+              </Badge>
 
-              <Text
-                fw={300}
-                component="span"
-              >{` - ${item.brand} ${item.model}`}</Text>
-            </Text>
+              <Text fw={300}>{`${item.brand} ${item.model}`}</Text>
+            </Group>
           ))}
+
+          {!carData?.data && <Text fw={500}>--</Text>}
         </Stack>
       )}
     </Show>

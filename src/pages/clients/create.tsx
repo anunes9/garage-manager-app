@@ -1,8 +1,10 @@
 import { IResourceComponentsProps, useTranslate } from "@refinedev/core"
-import { Create, useForm } from "@refinedev/mantine"
-import { TextInput } from "@mantine/core"
+import { Create, SaveButton, useForm } from "@refinedev/mantine"
+import { Button, Group, TextInput } from "@mantine/core"
+import { useNavigate } from "react-router-dom"
 
 export const ClientCreate: React.FC<IResourceComponentsProps> = () => {
+  const navigate = useNavigate()
   const translate = useTranslate()
   const {
     getInputProps,
@@ -19,7 +21,19 @@ export const ClientCreate: React.FC<IResourceComponentsProps> = () => {
   })
 
   return (
-    <Create isLoading={formLoading} saveButtonProps={saveButtonProps}>
+    <Create
+      isLoading={formLoading}
+      saveButtonProps={saveButtonProps}
+      footerButtons={() => (
+        <Group>
+          <Button color="gray" onClick={() => navigate("/cars")}>
+            {translate("buttons.cancel")}
+          </Button>
+
+          <SaveButton {...saveButtonProps} />
+        </Group>
+      )}
+    >
       <TextInput
         mt="sm"
         label={translate("clients.fields.name")}

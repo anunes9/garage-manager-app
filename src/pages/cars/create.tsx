@@ -1,8 +1,14 @@
-import { IResourceComponentsProps, useTranslate } from "@refinedev/core"
-import { Create, useForm, useSelect } from "@refinedev/mantine"
-import { TextInput, Select } from "@mantine/core"
+import {
+  IResourceComponentsProps,
+  useList,
+  useTranslate,
+} from "@refinedev/core"
+import { Create, SaveButton, useForm } from "@refinedev/mantine"
+import { TextInput, Select, LoadingOverlay, Group, Button } from "@mantine/core"
+import { useNavigate } from "react-router-dom"
 
 export const CarCreate: React.FC<IResourceComponentsProps> = () => {
+  const navigate = useNavigate()
   const translate = useTranslate()
   const {
     getInputProps,
@@ -13,7 +19,7 @@ export const CarCreate: React.FC<IResourceComponentsProps> = () => {
       brand: "",
       model: "",
       plate: "",
-      client: { id: "" },
+      client: "",
     },
     validate: {
       brand: (value) =>
@@ -23,29 +29,30 @@ export const CarCreate: React.FC<IResourceComponentsProps> = () => {
       plate: (value) =>
         value.length < 2 ? translate("pages.error.required") : null,
       client: (value) =>
-        value.id.length < 2 ? translate("pages.error.required") : null,
-    },
-    transformValues: (values) => {
-      const client = clientSelectProps.data.find(
-        (c) => c.value === values.client.id
-      )!
-
-      return {
-        brand: values.brand,
-        model: values.model,
-        plate: values.plate,
-        client: { id: client.value, name: client.label },
-      }
+        value.length < 2 ? translate("pages.error.required") : null,
     },
   })
 
-  const { selectProps: clientSelectProps } = useSelect({
+  const { data: clientsData, isLoading } = useList({
     resource: "clients",
-    optionLabel: "name",
   })
 
   return (
-    <Create isLoading={formLoading} saveButtonProps={saveButtonProps}>
+    <Create
+      isLoading={formLoading}
+      saveButtonProps={saveButtonProps}
+      footerButtons={() => (
+        <Group>
+          <Button color="gray" onClick={() => navigate("/cars")}>
+            {translate("buttons.cancel")}
+          </Button>
+
+          <SaveButton {...saveButtonProps} />
+        </Group>
+      )}
+    >
+      <LoadingOverlay visible={isLoading} />
+
       <TextInput
         mt="sm"
         label={translate("cars.fields.brand")}
@@ -71,8 +78,15 @@ export const CarCreate: React.FC<IResourceComponentsProps> = () => {
         mt="sm"
         label={translate("cars.fields.client")}
         required
-        {...getInputProps("client.id")}
-        {...clientSelectProps}
+        data={
+          isLoading
+            ? []
+            : clientsData?.data.map((c) => ({
+                value: c.id,
+                label: `${c.name} ${c.phone}`,
+              }))
+        }
+        {...getInputProps("client")}
       />
     </Create>
   )
