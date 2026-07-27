@@ -18,8 +18,10 @@
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
 
-    <%# Includes all stylesheet files in app/assets/stylesheets %>
-    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%# Explicit stylesheet names (rather than the :app bulk-include helper) so this
+        layout never picks up app/admin's ActiveAdmin stylesheet, which also compiles
+        into app/assets/builds. %>
+    <%= stylesheet_link_tag "application", "tailwind", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 

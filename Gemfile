@@ -16,6 +16,8 @@ gem "turbo-rails"
 gem "stimulus-rails"
 # Use Tailwind CSS [https://github.com/rails/tailwindcss-rails]
 gem "tailwindcss-rails"
+# Compile ActiveAdmin's SCSS stylesheet under Propshaft [https://github.com/rails/dartsass-rails]
+gem "dartsass-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
