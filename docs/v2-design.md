@@ -50,6 +50,7 @@ No data migration from the v1 Appwrite backend — v2 starts with a fresh databa
 ### Repair (renamed from v1's `Budget`)
 
 - `date`, `km`, `total` (computed from its parts, same as v1)
+- `notes` long string
 - `belongs_to :car`
 - `has_many :parts`
 
