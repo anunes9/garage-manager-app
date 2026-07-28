@@ -13,12 +13,22 @@ class ApplicationController < ActionController::Base
   end
 
   def switch_locale(&action)
-    locale = params[:locale] || I18n.default_locale
-    I18n.with_locale(locale, &action)
+    I18n.with_locale(requested_locale, &action)
+  end
+
+  # Never hand an unknown locale to I18n: with `enforce_available_locales` on (the
+  # default) that raises I18n::InvalidLocale and 500s the request.
+  def requested_locale
+    valid_locale_param || I18n.default_locale
+  end
+
+  def valid_locale_param
+    requested = params[:locale].to_s
+    requested if I18n.available_locales.map(&:to_s).include?(requested)
   end
 
   def default_url_options
-    { locale: params[:locale] }
+    { locale: valid_locale_param }
   end
 
   def authenticate_admin_user!
