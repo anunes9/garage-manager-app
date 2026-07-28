@@ -1,0 +1,33 @@
+<%= form_with model: car, class: "space-y-4" do |f| %>
+  <% if car.errors.any? %>
+    <div class="text-red-700">
+      <ul>
+        <% car.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= f.label :client_id, "Client", class: "block font-medium" %>
+    <%= f.collection_select :client_id, Client.order(:name), :id, :name, { prompt: true }, class: "border rounded px-2 py-1 w-full" %>
+  </div>
+
+  <div>
+    <%= f.label :brand, class: "block font-medium" %>
+    <%= f.text_field :brand, class: "border rounded px-2 py-1 w-full" %>
+  </div>
+
+  <div>
+    <%= f.label :model, class: "block font-medium" %>
+    <%= f.text_field :model, class: "border rounded px-2 py-1 w-full" %>
+  </div>
+
+  <div>
+    <%= f.label :plate, class: "block font-medium" %>
+    <%= f.text_field :plate, class: "border rounded px-2 py-1 w-full" %>
+  </div>
+
+  <%= f.submit class: "bg-blue-600 text-white px-4 py-2 rounded cursor-pointer" %>
+<% end %>

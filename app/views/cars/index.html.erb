@@ -1,0 +1,27 @@
+<h1 class="text-2xl font-bold mb-4">Cars</h1>
+
+<%= link_to "New Car", new_car_path, class: "bg-blue-600 text-white px-4 py-2 rounded" %>
+
+<table class="w-full mt-4 border-collapse">
+  <thead>
+    <tr class="text-left border-b">
+      <th class="py-2">Plate</th>
+      <th class="py-2">Brand / Model</th>
+      <th class="py-2">Client</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cars.each do |car| %>
+      <tr class="border-b">
+        <td class="py-2"><%= link_to car.plate, car_path(car) %></td>
+        <td class="py-2"><%= "#{car.brand} #{car.model}" %></td>
+        <td class="py-2"><%= link_to car.client.name, client_path(car.client) %></td>
+        <td class="py-2 text-right">
+          <%= link_to "Edit", edit_car_path(car) %>
+          <%= button_to "Delete", car_path(car), method: :delete, class: "bg-transparent border-0 p-0 text-red-700 underline cursor-pointer ml-2", form: { data: { turbo_confirm: "Are you sure?" } } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
