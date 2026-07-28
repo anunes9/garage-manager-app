@@ -26,7 +26,26 @@
   </head>
 
   <body>
+    <% if user_signed_in? %>
+      <nav class="bg-gray-800 text-white px-4 py-3 flex items-center gap-4">
+        <%= link_to "Clients", clients_path, class: "hover:underline" %>
+        <%= link_to "Cars", cars_path, class: "hover:underline" %>
+        <%= link_to "Repairs", repairs_path, class: "hover:underline" %>
+        <% if current_user.admin? %>
+          <%= link_to "Admin", "/admin", class: "hover:underline" %>
+        <% end %>
+        <span class="ml-auto text-sm"><%= current_user.email %></span>
+        <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "hover:underline bg-transparent border-0 p-0 text-sm cursor-pointer" %>
+      </nav>
+    <% end %>
+
     <main class="container mx-auto mt-28 px-5 flex">
+      <% if notice %>
+        <p class="mb-4 text-green-700"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="mb-4 text-red-700"><%= alert %></p>
+      <% end %>
       <%= yield %>
     </main>
   </body>

@@ -11,7 +11,10 @@ Rails.application.routes.draw do
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
+  resources :clients
+  resources :cars
+  resources :repairs
+
   # Defines the root path route ("/")
-  # TODO(Task 7): replace with `root "clients#index"` once the Clients controller exists.
-  root to: redirect("/users/sign_in")
+  root "clients#index"
 end
