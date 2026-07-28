@@ -1,20 +1,6 @@
-<div class="nav-search" data-controller="car-search">
-  <button type="button" class="nav-search__toggle" aria-label="<%= t("nav.search") %>" data-action="car-search#toggle">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" class="nav-search__icon" aria-hidden="true">
-      <circle cx="9" cy="9" r="6"></circle>
-      <line x1="18" y1="18" x2="13.5" y2="13.5"></line>
-    </svg>
-  </button>
-
-  <div class="nav-search__panel hidden" data-car-search-target="container">
-    <%= form_with url: search_cars_path, method: :get, data: { turbo_frame: "car_search_results", car_search_target: "form" } do |f| %>
-      <%= f.text_field :q,
-            placeholder: t("cars.search.placeholder"),
-            autocomplete: "off",
-            class: "field-input nav-search__input",
-            data: { car_search_target: "input", action: "input->car-search#submit keydown->car-search#keydown" } %>
-    <% end %>
-
-    <%= turbo_frame_tag "car_search_results", data: { car_search_target: "results" } %>
-  </div>
-</div>
+<%= link_to search_cars_path, class: "nav-search-link", aria: { label: t("nav.search") } do %>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" class="nav-search-link__icon" aria-hidden="true">
+    <circle cx="9" cy="9" r="6"></circle>
+    <line x1="18" y1="18" x2="13.5" y2="13.5"></line>
+  </svg>
+<% end %>

@@ -32,7 +32,9 @@ pt:
       model: "Modelo"
       plate: "Matrícula"
     search:
+      title: "Pesquisar por Matrícula"
       placeholder: "Pesquisar por matrícula…"
+      prompt: "Escreva pelo menos 2 caracteres para pesquisar."
       no_results: "Nenhum carro encontrado."
     created: "Carro criado."
     updated: "Carro atualizado."

@@ -57,9 +57,15 @@ RSpec.describe "Cars", type: :request do
     expect(response.body).to include(I18n.t("cars.search.no_results"))
   end
 
-  it "does not search with fewer than 2 characters" do
+  it "shows a prompt instead of searching with fewer than 2 characters" do
     create(:car, plate: "AA-11-BB")
     get search_cars_path, params: { q: "A" }
-    expect(response.body).to include(I18n.t("cars.search.no_results"))
+    expect(response.body).to include(I18n.t("cars.search.prompt"))
+    expect(response.body).not_to include("AA-11-BB")
+  end
+
+  it "shows a prompt when the search page is visited directly with no query" do
+    get search_cars_path
+    expect(response.body).to include(I18n.t("cars.search.prompt"))
   end
 end

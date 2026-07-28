@@ -1,1 +1,15 @@
-<%= render "search_results", cars: @cars %>
+<%= render "shared/page_head", title: t("cars.search.title") %>
+
+<div class="card p-6 max-w-xl" data-controller="car-search">
+  <%= form_with url: search_cars_path, method: :get, data: { turbo_frame: "car_search_results", car_search_target: "form" } do |f| %>
+    <%= f.label :q, t("cars.fields.plate"), class: "field-label" %>
+    <%= f.text_field :q,
+          value: @query,
+          placeholder: t("cars.search.placeholder"),
+          autocomplete: "off",
+          class: "field-input",
+          data: { car_search_target: "input", action: "input->car-search#submit keydown->car-search#keydown" } %>
+  <% end %>
+
+  <%= render "search_results", cars: @cars, query: @query %>
+</div>
