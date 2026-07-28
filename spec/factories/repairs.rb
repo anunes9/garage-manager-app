@@ -1,7 +1,9 @@
 FactoryBot.define do
   factory :repair do
-    car { nil }
-    description { "MyText" }
-    cost { "9.99" }
+    date { Date.current }
+    km { 50_000 }
+    total { 100.00 }
+    notes { "" }
+    car
   end
 end

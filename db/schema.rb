@@ -47,9 +47,11 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_27_223304) do
 
   create_table "repairs", force: :cascade do |t|
     t.bigint "car_id", null: false
-    t.decimal "cost"
     t.datetime "created_at", null: false
-    t.text "description"
+    t.date "date"
+    t.integer "km"
+    t.text "notes"
+    t.decimal "total", precision: 10, scale: 2
     t.datetime "updated_at", null: false
     t.index ["car_id"], name: "index_repairs_on_car_id"
   end
