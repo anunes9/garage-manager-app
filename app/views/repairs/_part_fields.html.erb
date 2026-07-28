@@ -1,0 +1,7 @@
+<div class="part-fields flex gap-2 mb-2 items-start" data-new-record="<%= f.object.new_record? %>">
+  <%= f.text_field :name, placeholder: "Name", class: "border rounded px-2 py-1 flex-1" %>
+  <%= f.number_field :quantity, placeholder: "Qty", class: "border rounded px-2 py-1 w-20" %>
+  <%= f.number_field :price, step: "0.01", placeholder: "Price", class: "border rounded px-2 py-1 w-24" %>
+  <%= f.hidden_field :_destroy %>
+  <button type="button" data-action="nested-form#remove" class="text-red-700 underline">Remove</button>
+</div>

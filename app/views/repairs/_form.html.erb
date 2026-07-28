@@ -1,0 +1,51 @@
+<%= form_with model: repair, class: "space-y-4", data: { controller: "nested-form" } do |f| %>
+  <% if repair.errors.any? %>
+    <div class="text-red-700">
+      <ul>
+        <% repair.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= f.label :car_id, "Car", class: "block font-medium" %>
+    <%= f.collection_select :car_id, Car.order(:plate), :id, :plate, { prompt: true }, class: "border rounded px-2 py-1 w-full" %>
+  </div>
+
+  <div>
+    <%= f.label :date, class: "block font-medium" %>
+    <%= f.date_field :date, class: "border rounded px-2 py-1 w-full" %>
+  </div>
+
+  <div>
+    <%= f.label :km, class: "block font-medium" %>
+    <%= f.number_field :km, class: "border rounded px-2 py-1 w-full" %>
+  </div>
+
+  <div>
+    <%= f.label :notes, class: "block font-medium" %>
+    <%= f.text_area :notes, class: "border rounded px-2 py-1 w-full" %>
+  </div>
+
+  <div>
+    <span class="block font-medium mb-2">Parts</span>
+
+    <div data-nested-form-target="parts">
+      <%= f.fields_for :parts do |part_fields| %>
+        <%= render "part_fields", f: part_fields %>
+      <% end %>
+    </div>
+
+    <template data-nested-form-target="template">
+      <%= f.fields_for :parts, Part.new, child_index: "NEW_RECORD" do |part_fields| %>
+        <%= render "part_fields", f: part_fields %>
+      <% end %>
+    </template>
+
+    <button type="button" data-action="nested-form#add" class="underline text-blue-700">Add Part</button>
+  </div>
+
+  <%= f.submit class: "bg-blue-600 text-white px-4 py-2 rounded cursor-pointer" %>
+<% end %>
