@@ -1,0 +1,13 @@
+<h1 class="text-2xl font-bold mb-4"><%= @client.name %></h1>
+
+<p><strong>Phone:</strong> <%= @client.phone %></p>
+
+<h2 class="text-xl font-semibold mt-6 mb-2">Cars</h2>
+<ul class="list-disc list-inside">
+  <% @client.cars.each do |car| %>
+    <li><%= link_to "#{car.brand} #{car.model} (#{car.plate})", car_path(car) %></li>
+  <% end %>
+</ul>
+
+<%= link_to "Edit", edit_client_path(@client), class: "inline-block mt-4 underline" %>
+<%= link_to "Back", clients_path, class: "inline-block mt-4 ml-4 underline" %>

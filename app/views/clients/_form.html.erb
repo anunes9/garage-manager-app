@@ -1,0 +1,23 @@
+<%= form_with model: client, class: "space-y-4" do |f| %>
+  <% if client.errors.any? %>
+    <div class="text-red-700">
+      <ul>
+        <% client.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= f.label :name, class: "block font-medium" %>
+    <%= f.text_field :name, class: "border rounded px-2 py-1 w-full" %>
+  </div>
+
+  <div>
+    <%= f.label :phone, class: "block font-medium" %>
+    <%= f.text_field :phone, class: "border rounded px-2 py-1 w-full" %>
+  </div>
+
+  <%= f.submit class: "bg-blue-600 text-white px-4 py-2 rounded cursor-pointer" %>
+<% end %>

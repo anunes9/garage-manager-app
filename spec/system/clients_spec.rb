@@ -1,0 +1,16 @@
+require "rails_helper"
+
+RSpec.describe "Managing clients", type: :system do
+  before { sign_in create(:user) }
+
+  it "creates a client" do
+    visit new_client_path
+
+    fill_in "Name", with: "Carol"
+    fill_in "Phone", with: "912345678"
+    click_on "Create Client"
+
+    expect(page).to have_content("Client created")
+    expect(page).to have_content("Carol")
+  end
+end
