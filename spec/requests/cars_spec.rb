@@ -35,4 +35,31 @@ RSpec.describe "Cars", type: :request do
     car = create(:car)
     expect { delete car_path(car) }.to change(Car, :count).by(-1)
   end
+
+  it "finds cars by partial, case-insensitive plate match" do
+    create(:car, plate: "AA-11-BB")
+    create(:car, plate: "cc-22-dd")
+    get search_cars_path, params: { q: "aa-11" }
+    expect(response.body).to include("AA-11-BB")
+    expect(response.body).not_to include("CC-22-DD")
+  end
+
+  it "shows every match when the query matches more than one plate" do
+    create(:car, plate: "AA-11-BB")
+    create(:car, plate: "AA-12-BB")
+    get search_cars_path, params: { q: "AA-1" }
+    expect(response.body).to include("AA-11-BB")
+    expect(response.body).to include("AA-12-BB")
+  end
+
+  it "shows an empty state when nothing matches" do
+    get search_cars_path, params: { q: "ZZ-99" }
+    expect(response.body).to include(I18n.t("cars.search.no_results"))
+  end
+
+  it "does not search with fewer than 2 characters" do
+    create(:car, plate: "AA-11-BB")
+    get search_cars_path, params: { q: "A" }
+    expect(response.body).to include(I18n.t("cars.search.no_results"))
+  end
 end

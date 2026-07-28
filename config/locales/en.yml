@@ -36,6 +36,9 @@ en:
     sign_out: "Sign out"
   clients:
     title: "Clients"
+    count:
+      one: "%{count} client on file"
+      other: "%{count} clients on file"
     new: "New Client"
     edit: "Edit Client"
     fields:
@@ -46,6 +49,9 @@ en:
     destroyed: "Client removed."
   cars:
     title: "Cars"
+    count:
+      one: "%{count} car on file"
+      other: "%{count} cars on file"
     new: "New Car"
     edit: "Edit Car"
     fields:
@@ -53,11 +59,17 @@ en:
       brand: "Brand"
       model: "Model"
       plate: "Plate"
+    search:
+      placeholder: "Search by plate…"
+      no_results: "No cars found."
     created: "Car created."
     updated: "Car updated."
     destroyed: "Car removed."
   repairs:
     title: "Repairs"
+    count:
+      one: "%{count} job logged"
+      other: "%{count} jobs logged"
     new: "New Repair"
     edit: "Edit Repair"
     show_heading: "Repair on %{date}"

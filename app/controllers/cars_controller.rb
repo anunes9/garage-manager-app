@@ -8,6 +8,15 @@ class CarsController < ApplicationController
   def show
   end
 
+  def search
+    query = params[:q].to_s.strip
+    @cars = if query.length >= 2
+      Car.includes(:client).where("plate ILIKE ?", "%#{query}%").order(:plate)
+    else
+      Car.none
+    end
+  end
+
   def new
     @car = Car.new
   end

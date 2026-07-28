@@ -1,0 +1,16 @@
+<%= turbo_frame_tag "car_search_results", data: { car_search_target: "results" } do %>
+  <% if cars.any? %>
+    <ul class="search-results">
+      <% cars.each do |car| %>
+        <li class="search-result">
+          <%= link_to car_path(car), class: "search-result__link", data: { turbo_frame: "_top", car_search_target: "resultLink" } do %>
+            <%= plate_badge(car.plate) %>
+            <span class="search-result__meta"><%= "#{car.brand} #{car.model} · #{car.client.name}" %></span>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p class="search-empty"><%= t("cars.search.no_results") %></p>
+  <% end %>
+<% end %>

@@ -7,6 +7,9 @@ pt:
     sign_out: "Sair"
   clients:
     title: "Clientes"
+    count:
+      one: "%{count} cliente registado"
+      other: "%{count} clientes registados"
     new: "Novo Cliente"
     edit: "Editar Cliente"
     fields:
@@ -17,6 +20,9 @@ pt:
     destroyed: "Cliente removido."
   cars:
     title: "Carros"
+    count:
+      one: "%{count} carro registado"
+      other: "%{count} carros registados"
     new: "Novo Carro"
     edit: "Editar Carro"
     fields:
@@ -24,11 +30,17 @@ pt:
       brand: "Marca"
       model: "Modelo"
       plate: "Matrícula"
+    search:
+      placeholder: "Pesquisar por matrícula…"
+      no_results: "Nenhum carro encontrado."
     created: "Carro criado."
     updated: "Carro atualizado."
     destroyed: "Carro removido."
   repairs:
     title: "Reparações"
+    count:
+      one: "%{count} reparação registada"
+      other: "%{count} reparações registadas"
     new: "Nova Reparação"
     edit: "Editar Reparação"
     show_heading: "Reparação de %{date}"
