@@ -18,6 +18,10 @@
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
     <%# Explicit stylesheet names (rather than the :app bulk-include helper) so this
         layout never picks up app/admin's ActiveAdmin stylesheet, which also compiles
         into app/assets/builds. %>
@@ -27,26 +31,34 @@
 
   <body>
     <% if user_signed_in? %>
-      <nav class="bg-gray-800 text-white px-4 py-3 flex items-center gap-4">
-        <%= link_to t("nav.clients"), clients_path, class: "hover:underline" %>
-        <%= link_to t("nav.cars"), cars_path, class: "hover:underline" %>
-        <%= link_to t("nav.repairs"), repairs_path, class: "hover:underline" %>
-        <% if current_user.admin? %>
-          <%# ActiveAdmin pages are jQuery/Rails-UJS driven and do not load Turbo, so
-              leave Turbo Drive out of the hand-off into the /admin namespace. %>
-          <%= link_to t("nav.admin"), "/admin", class: "hover:underline", data: { turbo: false } %>
-        <% end %>
-        <span class="ml-auto text-sm"><%= current_user.email %></span>
-        <%= button_to t("nav.sign_out"), destroy_user_session_path, method: :delete, class: "hover:underline bg-transparent border-0 p-0 text-sm cursor-pointer" %>
+      <nav class="shell-nav px-4 sm:px-6 py-2">
+        <div class="flex items-center justify-between gap-4">
+          <span class="brand-mark">GARA<span>GEM</span></span>
+          <div class="flex items-center gap-3 sm:gap-5">
+            <%= render "shared/plate_search" %>
+            <span class="hidden sm:inline text-sm font-mono text-gray-400"><%= current_user.email %></span>
+            <%= button_to t("nav.sign_out"), destroy_user_session_path, method: :delete, class: "nav-link bg-transparent border-0 p-0 cursor-pointer" %>
+          </div>
+        </div>
+        <div class="flex items-center gap-5 sm:gap-6 flex-wrap">
+          <%= link_to t("nav.clients"), clients_path, class: "nav-link #{"is-active" if controller_name == "clients"}" %>
+          <%= link_to t("nav.cars"), cars_path, class: "nav-link #{"is-active" if controller_name == "cars"}" %>
+          <%= link_to t("nav.repairs"), repairs_path, class: "nav-link #{"is-active" if controller_name == "repairs"}" %>
+          <% if current_user.admin? %>
+            <%# ActiveAdmin pages are jQuery/Rails-UJS driven and do not load Turbo, so
+                leave Turbo Drive out of the hand-off into the /admin namespace. %>
+            <%= link_to t("nav.admin"), "/admin", class: "nav-link", data: { turbo: false } %>
+          <% end %>
+        </div>
       </nav>
     <% end %>
 
-    <main class="container mx-auto mt-28 px-5 flex">
+    <main class="container mx-auto mt-8 sm:mt-12 px-4 sm:px-6 pb-16">
       <% if notice %>
-        <p class="mb-4 text-green-700"><%= notice %></p>
+        <p class="mb-6 px-4 py-3 rounded bg-[#eaf3ea] border border-[#3f7a4d] text-[#2a5c35] text-base"><%= notice %></p>
       <% end %>
       <% if alert %>
-        <p class="mb-4 text-red-700"><%= alert %></p>
+        <p class="mb-6 px-4 py-3 rounded form-error-box text-base"><%= alert %></p>
       <% end %>
       <%= yield %>
     </main>

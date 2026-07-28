@@ -34,6 +34,7 @@ en:
     repairs: "Repairs"
     admin: "Admin"
     sign_out: "Sign out"
+    search: "Search plate"
   clients:
     title: "Clients"
     count:

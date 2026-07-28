@@ -33,4 +33,9 @@ RSpec.describe "Clients", type: :request do
     client = create(:client)
     expect { delete client_path(client) }.to change(Client, :count).by(-1)
   end
+
+  it "shows the plate search control in the nav" do
+    get clients_path
+    expect(response.body).to include(I18n.t("nav.search"))
+  end
 end

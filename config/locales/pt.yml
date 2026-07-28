@@ -5,6 +5,7 @@ pt:
     repairs: "Reparações"
     admin: "Admin"
     sign_out: "Sair"
+    search: "Pesquisar matrícula"
   clients:
     title: "Clientes"
     count:
