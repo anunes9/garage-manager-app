@@ -55,3 +55,4 @@ pt:
     edit: "Editar"
     delete: "Eliminar"
     confirm: "Tem a certeza?"
+    not_authorized: "Não autorizado"
