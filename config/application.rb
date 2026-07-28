@@ -41,5 +41,8 @@ module GarageManagerApp
 
     config.i18n.available_locales = [:en, :pt]
     config.i18n.default_locale = :en
+    # Fall back to English for any key a locale is missing, instead of rendering
+    # literal "translation missing: ..." text.
+    config.i18n.fallbacks = [ :en ]
   end
 end
