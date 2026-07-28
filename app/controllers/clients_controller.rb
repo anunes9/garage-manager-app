@@ -15,7 +15,7 @@ class ClientsController < ApplicationController
   def create
     @client = Client.new(client_params)
     if @client.save
-      redirect_to @client, notice: "Client created."
+      redirect_to @client, notice: t("clients.created")
     else
       render :new, status: :unprocessable_entity
     end
@@ -26,7 +26,7 @@ class ClientsController < ApplicationController
 
   def update
     if @client.update(client_params)
-      redirect_to @client, notice: "Client updated."
+      redirect_to @client, notice: t("clients.updated")
     else
       render :edit, status: :unprocessable_entity
     end
@@ -34,7 +34,7 @@ class ClientsController < ApplicationController
 
   def destroy
     @client.destroy
-    redirect_to clients_path, notice: "Client removed."
+    redirect_to clients_path, notice: t("clients.destroyed")
   end
 
   private

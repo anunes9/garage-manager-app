@@ -15,7 +15,7 @@ class CarsController < ApplicationController
   def create
     @car = Car.new(car_params)
     if @car.save
-      redirect_to @car, notice: "Car created."
+      redirect_to @car, notice: t("cars.created")
     else
       render :new, status: :unprocessable_entity
     end
@@ -26,7 +26,7 @@ class CarsController < ApplicationController
 
   def update
     if @car.update(car_params)
-      redirect_to @car, notice: "Car updated."
+      redirect_to @car, notice: t("cars.updated")
     else
       render :edit, status: :unprocessable_entity
     end
@@ -34,7 +34,7 @@ class CarsController < ApplicationController
 
   def destroy
     @car.destroy
-    redirect_to cars_path, notice: "Car removed."
+    redirect_to cars_path, notice: t("cars.destroyed")
   end
 
   private

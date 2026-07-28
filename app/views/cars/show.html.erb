@@ -1,14 +1,14 @@
 <h1 class="text-2xl font-bold mb-4"><%= "#{@car.brand} #{@car.model}" %></h1>
 
-<p><strong>Plate:</strong> <%= @car.plate %></p>
-<p><strong>Client:</strong> <%= link_to @car.client.name, client_path(@car.client) %></p>
+<p><strong><%= t("cars.fields.plate") %>:</strong> <%= @car.plate %></p>
+<p><strong><%= t("cars.fields.client") %>:</strong> <%= link_to @car.client.name, client_path(@car.client) %></p>
 
-<h2 class="text-xl font-semibold mt-6 mb-2">Repairs</h2>
+<h2 class="text-xl font-semibold mt-6 mb-2"><%= t("repairs.title") %></h2>
 <ul class="list-disc list-inside">
   <% @car.repairs.order(date: :desc).each do |repair| %>
     <li><%= link_to "#{repair.date} — #{repair.total}€", repair_path(repair) %></li>
   <% end %>
 </ul>
 
-<%= link_to "Edit", edit_car_path(@car), class: "inline-block mt-4 underline" %>
-<%= link_to "Back", cars_path, class: "inline-block mt-4 ml-4 underline" %>
+<%= link_to t("common.edit"), edit_car_path(@car), class: "inline-block mt-4 underline" %>
+<%= link_to t("common.back"), cars_path, class: "inline-block mt-4 ml-4 underline" %>

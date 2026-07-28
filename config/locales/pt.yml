@@ -1,0 +1,57 @@
+pt:
+  nav:
+    clients: "Clientes"
+    cars: "Carros"
+    repairs: "Reparações"
+    admin: "Admin"
+    sign_out: "Sair"
+  clients:
+    title: "Clientes"
+    new: "Novo Cliente"
+    edit: "Editar Cliente"
+    fields:
+      name: "Nome"
+      phone: "Telefone"
+    created: "Cliente criado."
+    updated: "Cliente atualizado."
+    destroyed: "Cliente removido."
+  cars:
+    title: "Carros"
+    new: "Novo Carro"
+    edit: "Editar Carro"
+    fields:
+      client: "Cliente"
+      brand: "Marca"
+      model: "Modelo"
+      plate: "Matrícula"
+    created: "Carro criado."
+    updated: "Carro atualizado."
+    destroyed: "Carro removido."
+  repairs:
+    title: "Reparações"
+    new: "Nova Reparação"
+    edit: "Editar Reparação"
+    show_heading: "Reparação de %{date}"
+    fields:
+      car: "Carro"
+      date: "Data"
+      km: "Km"
+      notes: "Notas"
+      parts: "Peças"
+      total: "Total"
+    add_part: "Adicionar Peça"
+    remove_part: "Remover"
+    created: "Reparação criada."
+    updated: "Reparação atualizada."
+    destroyed: "Reparação removida."
+  parts:
+    fields:
+      name: "Nome"
+      quantity: "Quantidade"
+      quantity_short: "Qtd"
+      price: "Preço"
+  common:
+    back: "Voltar"
+    edit: "Editar"
+    delete: "Eliminar"
+    confirm: "Tem a certeza?"

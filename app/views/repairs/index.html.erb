@@ -1,13 +1,13 @@
-<h1 class="text-2xl font-bold mb-4">Repairs</h1>
+<h1 class="text-2xl font-bold mb-4"><%= t("repairs.title") %></h1>
 
-<%= link_to "New Repair", new_repair_path, class: "bg-blue-600 text-white px-4 py-2 rounded" %>
+<%= link_to t("repairs.new"), new_repair_path, class: "bg-blue-600 text-white px-4 py-2 rounded" %>
 
 <table class="w-full mt-4 border-collapse">
   <thead>
     <tr class="text-left border-b">
-      <th class="py-2">Date</th>
-      <th class="py-2">Car</th>
-      <th class="py-2">Total</th>
+      <th class="py-2"><%= t("repairs.fields.date") %></th>
+      <th class="py-2"><%= t("repairs.fields.car") %></th>
+      <th class="py-2"><%= t("repairs.fields.total") %></th>
       <th></th>
     </tr>
   </thead>
@@ -18,8 +18,8 @@
         <td class="py-2"><%= link_to repair.car.plate, car_path(repair.car) %></td>
         <td class="py-2"><%= "#{repair.total}€" %></td>
         <td class="py-2 text-right">
-          <%= link_to "Edit", edit_repair_path(repair) %>
-          <%= button_to "Delete", repair_path(repair), method: :delete, class: "bg-transparent border-0 p-0 text-red-700 underline cursor-pointer ml-2", form: { data: { turbo_confirm: "Are you sure?" } } %>
+          <%= link_to t("common.edit"), edit_repair_path(repair) %>
+          <%= button_to t("common.delete"), repair_path(repair), method: :delete, class: "bg-transparent border-0 p-0 text-red-700 underline cursor-pointer ml-2", form: { data: { turbo_confirm: t("common.confirm") } } %>
         </td>
       </tr>
     <% end %>

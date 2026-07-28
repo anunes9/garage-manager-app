@@ -16,7 +16,7 @@ class RepairsController < ApplicationController
   def create
     @repair = Repair.new(repair_params)
     if @repair.save
-      redirect_to @repair, notice: "Repair created."
+      redirect_to @repair, notice: t("repairs.created")
     else
       render :new, status: :unprocessable_entity
     end
@@ -27,7 +27,7 @@ class RepairsController < ApplicationController
 
   def update
     if @repair.update(repair_params)
-      redirect_to @repair, notice: "Repair updated."
+      redirect_to @repair, notice: t("repairs.updated")
     else
       render :edit, status: :unprocessable_entity
     end
@@ -35,7 +35,7 @@ class RepairsController < ApplicationController
 
   def destroy
     @repair.destroy
-    redirect_to repairs_path, notice: "Repair removed."
+    redirect_to repairs_path, notice: t("repairs.destroyed")
   end
 
   private

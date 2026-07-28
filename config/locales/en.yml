@@ -28,4 +28,59 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
+  nav:
+    clients: "Clients"
+    cars: "Cars"
+    repairs: "Repairs"
+    admin: "Admin"
+    sign_out: "Sign out"
+  clients:
+    title: "Clients"
+    new: "New Client"
+    edit: "Edit Client"
+    fields:
+      name: "Name"
+      phone: "Phone"
+    created: "Client created."
+    updated: "Client updated."
+    destroyed: "Client removed."
+  cars:
+    title: "Cars"
+    new: "New Car"
+    edit: "Edit Car"
+    fields:
+      client: "Client"
+      brand: "Brand"
+      model: "Model"
+      plate: "Plate"
+    created: "Car created."
+    updated: "Car updated."
+    destroyed: "Car removed."
+  repairs:
+    title: "Repairs"
+    new: "New Repair"
+    edit: "Edit Repair"
+    show_heading: "Repair on %{date}"
+    fields:
+      car: "Car"
+      date: "Date"
+      km: "Km"
+      notes: "Notes"
+      parts: "Parts"
+      total: "Total"
+    add_part: "Add Part"
+    remove_part: "Remove"
+    created: "Repair created."
+    updated: "Repair updated."
+    destroyed: "Repair removed."
+  parts:
+    fields:
+      name: "Name"
+      quantity: "Quantity"
+      quantity_short: "Qty"
+      price: "Price"
+  common:
+    back: "Back"
+    edit: "Edit"
+    delete: "Delete"
+    confirm: "Are you sure?"

@@ -1,16 +1,16 @@
-<h1 class="text-2xl font-bold mb-4">Repair on <%= @repair.date %></h1>
+<h1 class="text-2xl font-bold mb-4"><%= t("repairs.show_heading", date: @repair.date) %></h1>
 
-<p><strong>Car:</strong> <%= link_to @repair.car.plate, car_path(@repair.car) %></p>
-<p><strong>Km:</strong> <%= @repair.km %></p>
-<p><strong>Notes:</strong> <%= @repair.notes %></p>
+<p><strong><%= t("repairs.fields.car") %>:</strong> <%= link_to @repair.car.plate, car_path(@repair.car) %></p>
+<p><strong><%= t("repairs.fields.km") %>:</strong> <%= @repair.km %></p>
+<p><strong><%= t("repairs.fields.notes") %>:</strong> <%= @repair.notes %></p>
 
-<h2 class="text-xl font-semibold mt-6 mb-2">Parts</h2>
+<h2 class="text-xl font-semibold mt-6 mb-2"><%= t("repairs.fields.parts") %></h2>
 <table class="w-full border-collapse">
   <thead>
     <tr class="text-left border-b">
-      <th class="py-2">Name</th>
-      <th class="py-2">Quantity</th>
-      <th class="py-2">Price</th>
+      <th class="py-2"><%= t("parts.fields.name") %></th>
+      <th class="py-2"><%= t("parts.fields.quantity") %></th>
+      <th class="py-2"><%= t("parts.fields.price") %></th>
     </tr>
   </thead>
   <tbody>
@@ -24,7 +24,7 @@
   </tbody>
 </table>
 
-<p class="mt-4 font-bold">Total: <%= "#{@repair.total}€" %></p>
+<p class="mt-4 font-bold"><%= t("repairs.fields.total") %>: <%= "#{@repair.total}€" %></p>
 
-<%= link_to "Edit", edit_repair_path(@repair), class: "inline-block mt-4 underline" %>
-<%= link_to "Back", repairs_path, class: "inline-block mt-4 ml-4 underline" %>
+<%= link_to t("common.edit"), edit_repair_path(@repair), class: "inline-block mt-4 underline" %>
+<%= link_to t("common.back"), repairs_path, class: "inline-block mt-4 ml-4 underline" %>

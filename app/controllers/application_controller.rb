@@ -6,9 +6,19 @@ class ApplicationController < ActionController::Base
   stale_when_importmap_changes
 
   before_action :authenticate_user!
+  around_action :switch_locale
 
   def after_sign_in_path_for(resource)
     clients_path
+  end
+
+  def switch_locale(&action)
+    locale = params[:locale] || I18n.default_locale
+    I18n.with_locale(locale, &action)
+  end
+
+  def default_url_options
+    { locale: params[:locale] }
   end
 
   def authenticate_admin_user!
