@@ -32,7 +32,9 @@
         <%= link_to t("nav.cars"), cars_path, class: "hover:underline" %>
         <%= link_to t("nav.repairs"), repairs_path, class: "hover:underline" %>
         <% if current_user.admin? %>
-          <%= link_to t("nav.admin"), "/admin", class: "hover:underline" %>
+          <%# ActiveAdmin pages are jQuery/Rails-UJS driven and do not load Turbo, so
+              leave Turbo Drive out of the hand-off into the /admin namespace. %>
+          <%= link_to t("nav.admin"), "/admin", class: "hover:underline", data: { turbo: false } %>
         <% end %>
         <span class="ml-auto text-sm"><%= current_user.email %></span>
         <%= button_to t("nav.sign_out"), destroy_user_session_path, method: :delete, class: "hover:underline bg-transparent border-0 p-0 text-sm cursor-pointer" %>

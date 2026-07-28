@@ -125,8 +125,10 @@ ActiveAdmin.setup do |config|
   # This setting changes the http method used when rendering the
   # link. For example :get, :delete, :put, etc..
   #
-  # Default:
-  # config.logout_link_method = :get
+  # Devise is configured with `sign_out_via = :delete` (config/initializers/devise.rb),
+  # so the logout link must issue a DELETE. Rails UJS (registered below) turns the
+  # resulting `data-method="delete"` link into a real DELETE request.
+  config.logout_link_method = :delete
 
   # == Root
   #
@@ -232,6 +234,32 @@ ActiveAdmin.setup do |config|
   #
   # To load a javascript file:
   #   config.register_javascript 'my_javascript.js'
+  #
+  # This app uses Propshaft (no Sprockets), so the default `active_admin.js`
+  # Sprockets manifest (`//= require active_admin/base`) would be served verbatim as a
+  # single comment and no JS would ever load. Instead we register every file Active
+  # Admin's bundle needs, in dependency order, each one a real file Propshaft can serve:
+  #
+  #   * jquery3.js                -> jQuery 3.7.1, from the jquery-rails gem that
+  #                                  activeadmin already depends on
+  #   * jquery-ui.js              -> jQuery UI 1.14.2, vendored in vendor/javascript
+  #                                  (the gem only ships jQuery UI as separate files that
+  #                                  rely on Sprockets to order them)
+  #   * rails-ujs.js              -> shipped by actionview, provides `data-method` /
+  #                                  `data-confirm` handling for Active Admin's delete
+  #                                  and logout links (and sets `$.rails`, which
+  #                                  replaces the jquery_ujs the bundle expects)
+  #   * active_admin/base.js      -> Active Admin's own prebuilt UMD bundle, served
+  #                                  straight from the gem (its leading `//= require`
+  #                                  lines are inert comments in the browser)
+  #
+  # Active Admin pages do not include the importmap/Turbo tags, so there is no
+  # Turbo <-> UJS overlap inside the /admin namespace.
+  config.clear_javascripts!
+  config.register_javascript "jquery3.js"
+  config.register_javascript "jquery-ui.js"
+  config.register_javascript "rails-ujs.js"
+  config.register_javascript "active_admin/base.js"
 
   # == CSV options
   #
