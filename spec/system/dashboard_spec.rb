@@ -27,9 +27,9 @@ RSpec.describe "Dashboard quick actions", type: :system do
     expect(page).to have_current_path(search_cars_path)
   end
 
-  it "is reachable from a Home link in the nav" do
+  it "is reachable by clicking the Garagem brand mark in the nav" do
     visit clients_path
-    click_on I18n.t("nav.home")
+    click_on "GARAGEM"
     expect(page).to have_current_path(root_path)
   end
 end
