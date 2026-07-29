@@ -29,6 +29,7 @@
 
 en:
   nav:
+    home: "Home"
     clients: "Clients"
     cars: "Cars"
     repairs: "Repairs"
@@ -60,6 +61,9 @@ en:
       brand: "Brand"
       model: "Model"
       plate: "Plate"
+      vin: "VIN"
+      motor: "Engine"
+      notes: "Notes"
     search:
       title: "Search by Plate"
       placeholder: "Search by plate…"
@@ -94,6 +98,15 @@ en:
       quantity: "Quantity"
       quantity_short: "Qty"
       price: "Price"
+  dashboard:
+    title: "Dashboard"
+    eyebrow: "Overview"
+    stats:
+      clients: "Clients"
+      cars: "Cars"
+      repairs: "Repairs"
+      repairs_this_month: "Repairs This Month"
+    quick_actions: "Quick Actions"
   settings:
     title: "Account Settings"
     profile_heading: "Profile"
@@ -126,6 +139,7 @@ en:
       subhead: "We track it — from first inspection to the last part replaced."
   common:
     back: "Back"
+    view: "View"
     edit: "Edit"
     delete: "Delete"
     confirm: "Are you sure?"

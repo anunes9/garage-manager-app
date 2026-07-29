@@ -105,6 +105,36 @@
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
   }
 
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  @media (min-width: 640px) {
+    .stat-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  .stat-card {
+    padding: 1.25rem 1.5rem;
+  }
+  .stat-card__value {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    line-height: 1;
+  }
+  .stat-card__label {
+    display: block;
+    margin-top: 0.35rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
   /* Buttons — sized for a thumb, not a cursor: 44px+ min height throughout. */
   .btn-primary {
     display: inline-flex;

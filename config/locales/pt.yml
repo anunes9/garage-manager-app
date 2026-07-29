@@ -1,5 +1,6 @@
 pt:
   nav:
+    home: "Início"
     clients: "Clientes"
     cars: "Carros"
     repairs: "Reparações"
@@ -31,6 +32,9 @@ pt:
       brand: "Marca"
       model: "Modelo"
       plate: "Matrícula"
+      vin: "Nº de Chassis (VIN)"
+      motor: "Motor"
+      notes: "Notas"
     search:
       title: "Pesquisar por Matrícula"
       placeholder: "Pesquisar por matrícula…"
@@ -65,6 +69,15 @@ pt:
       quantity: "Quantidade"
       quantity_short: "Qtd"
       price: "Preço"
+  dashboard:
+    title: "Painel"
+    eyebrow: "Resumo"
+    stats:
+      clients: "Clientes"
+      cars: "Carros"
+      repairs: "Reparações"
+      repairs_this_month: "Reparações Este Mês"
+    quick_actions: "Ações Rápidas"
   settings:
     title: "Definições da Conta"
     profile_heading: "Perfil"
@@ -97,6 +110,7 @@ pt:
       subhead: "Nós registamo-la — da primeira inspeção à última peça substituída."
   common:
     back: "Voltar"
+    view: "Ver"
     edit: "Editar"
     delete: "Eliminar"
     confirm: "Tem a certeza?"
