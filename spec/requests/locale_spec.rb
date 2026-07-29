@@ -1,29 +1,21 @@
 require "rails_helper"
 
 RSpec.describe "Locale switching", type: :request do
-  before { sign_in create(:user) }
-
   it "renders English by default" do
+    sign_in create(:user)
     get clients_path
     expect(response.body).to include("Clients")
   end
 
-  it "renders Portuguese when ?locale=pt" do
-    get clients_path(locale: :pt)
+  it "renders Portuguese for a user whose locale is pt" do
+    sign_in create(:user, locale: "pt")
+    get clients_path
     expect(response.body).to include("Clientes")
   end
 
-  it "falls back to the default locale for an unknown ?locale instead of raising" do
-    get clients_path(locale: "xx")
-
-    expect(response).to have_http_status(:ok)
-    expect(response.body).to include("Clients")
-  end
-
-  it "ignores a non-scalar ?locale param" do
-    get "/clients?locale[]=pt"
-
-    expect(response).to have_http_status(:ok)
-    expect(response.body).to include("Clients")
+  it "ignores a ?locale param now that locale is a per-user setting" do
+    sign_in create(:user, locale: "pt")
+    get clients_path(locale: "en")
+    expect(response.body).to include("Clientes")
   end
 end
