@@ -4,6 +4,7 @@ class User < ApplicationRecord
   enum :role, { admin: 0, garage_manager: 1 }
 
   validates :role, presence: true
+  validates :locale, inclusion: { in: I18n.available_locales.map(&:to_s) }
 
   # Ransack (used by ActiveAdmin's index filters) requires an explicit allowlist of
   # searchable attributes. Sensitive columns (encrypted_password, reset_password_token)

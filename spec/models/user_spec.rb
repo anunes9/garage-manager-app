@@ -25,4 +25,16 @@ RSpec.describe User, type: :model do
       expect(build(:user).admin?).to be false
     end
   end
+
+  describe "#locale" do
+    it "is valid for each available locale" do
+      I18n.available_locales.each do |locale|
+        expect(build(:user, locale: locale.to_s)).to be_valid
+      end
+    end
+
+    it "is invalid for an unsupported locale" do
+      expect(build(:user, locale: "xx")).not_to be_valid
+    end
+  end
 end
