@@ -35,7 +35,6 @@
         <div class="flex items-center justify-between gap-4">
           <span class="brand-mark">GARA<span>GEM</span></span>
           <div class="flex items-center gap-3 sm:gap-5">
-            <%= render "shared/plate_search" %>
             <%= link_to current_user.name.presence || current_user.email, edit_settings_path, class: "hidden sm:inline text-sm font-mono text-[var(--color-muted)] hover:text-[var(--color-ink)]" %>
             <%= button_to t("nav.sign_out"), destroy_user_session_path, method: :delete, class: "nav-link bg-transparent border-0 p-0 cursor-pointer" %>
           </div>
@@ -45,6 +44,7 @@
           <%= link_to t("nav.clients"), clients_path, class: "nav-link #{"is-active" if controller_name == "clients"}" %>
           <%= link_to t("nav.cars"), cars_path, class: "nav-link #{"is-active" if controller_name == "cars"}" %>
           <%= link_to t("nav.repairs"), repairs_path, class: "nav-link #{"is-active" if controller_name == "repairs"}" %>
+          <%= render "shared/plate_search" %>
           <% if current_user.admin? %>
             <%# ActiveAdmin pages are jQuery/Rails-UJS driven and do not load Turbo, so
                 leave Turbo Drive out of the hand-off into the /admin namespace. %>
