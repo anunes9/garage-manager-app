@@ -1,0 +1,13 @@
+<div class="page-head">
+  <div>
+    <% if local_assigns[:eyebrow] %>
+      <span class="eyebrow"><%= eyebrow %></span>
+    <% end %>
+    <h1 class="title-display"><%= title %></h1>
+  </div>
+  <% if local_assigns[:cta_text] %>
+    <%= link_to cta_path, class: "btn-primary w-full sm:w-auto" do %>
+      <span aria-hidden="true">+</span> <%= cta_text %>
+    <% end %>
+  <% end %>
+</div>

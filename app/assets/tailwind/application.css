@@ -6,15 +6,19 @@
   --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, monospace;
 
-  --color-paper: #f6f2ea;
-  --color-paper-line: #e2dac8;
-  --color-ink: #211c16;
-  --color-muted: #756e60;
-  --color-steel: #23262a;
-  --color-steel-line: #3b3f43;
-  --color-accent: #de5b2d;
-  --color-accent-dark: #b2431e;
-  --color-danger: #9c3b2e;
+  /* Dark charcoal-and-tan palette: paper/steel form the dark ramp, ink/muted
+     the light-on-dark text ramp. --color-*-line shades are the only values
+     not drawn directly from that four-color palette, added purely so
+     hairline borders stay visible against their own surface. */
+  --color-paper: #222831;
+  --color-paper-line: #393e46;
+  --color-ink: #dfd0b8;
+  --color-muted: #948979;
+  --color-steel: #393e46;
+  --color-steel-line: #4d525a;
+  --color-accent: #dfd0b8;
+  --color-accent-dark: #948979;
+  --color-danger: #e2725b;
   --color-plate-band: #1f4fa3;
 }
 
@@ -41,28 +45,28 @@
     font-family: var(--font-display);
     letter-spacing: 0.06em;
     font-size: 1.5rem;
-    color: #fff;
+    color: var(--color-ink);
     line-height: 1;
   }
   .brand-mark span {
-    color: var(--color-accent);
+    color: var(--color-muted);
   }
   .nav-link {
     display: inline-flex;
     align-items: center;
     font-size: 1rem;
     font-weight: 500;
-    color: #c9cdd1;
+    color: var(--color-muted);
     min-height: 2.75rem;
     padding-block: 0.5rem;
     border-bottom: 2px solid transparent;
     transition: color 0.15s ease, border-color 0.15s ease;
   }
   .nav-link:hover {
-    color: #fff;
+    color: var(--color-ink);
   }
   .nav-link.is-active {
-    color: #fff;
+    color: var(--color-ink);
     border-color: var(--color-accent);
   }
 
@@ -94,11 +98,11 @@
   }
 
   .card {
-    background-color: #fff;
-    border: 1px solid var(--color-paper-line);
-    border-top: 4px solid var(--color-steel);
+    background-color: var(--color-steel);
+    border: 1px solid var(--color-steel-line);
+    border-top: 4px solid var(--color-accent);
     border-radius: 0.25rem;
-    box-shadow: 0 1px 2px rgba(33, 28, 22, 0.04);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
   }
 
   /* Buttons — sized for a thumb, not a cursor: 44px+ min height throughout. */
@@ -108,7 +112,7 @@
     justify-content: center;
     gap: 0.4rem;
     background-color: var(--color-accent);
-    color: #fff;
+    color: var(--color-paper);
     font-weight: 600;
     font-size: 1rem;
     min-height: 3rem;
@@ -126,13 +130,13 @@
     align-items: center;
     justify-content: center;
     gap: 0.4rem;
-    background-color: #fff;
+    background-color: var(--color-steel);
     color: var(--color-ink);
     font-weight: 600;
     font-size: 0.95rem;
     min-height: 2.75rem;
     padding: 0.65rem 1.25rem;
-    border: 1.5px solid var(--color-paper-line);
+    border: 1.5px solid var(--color-steel-line);
     border-radius: 0.35rem;
     transition: border-color 0.15s ease, background-color 0.15s ease;
   }
@@ -146,7 +150,7 @@
     align-items: center;
     justify-content: center;
     gap: 0.4rem;
-    background-color: #fff;
+    background-color: var(--color-steel);
     color: var(--color-danger);
     font-weight: 600;
     font-size: 0.95rem;
@@ -159,7 +163,7 @@
   }
   .btn-danger:hover {
     background-color: var(--color-danger);
-    color: #fff;
+    color: var(--color-paper);
   }
 
   .btn-text {
@@ -206,16 +210,16 @@
     color: var(--color-muted);
     font-weight: 500;
     padding: 0.6rem 1.25rem;
-    border-bottom: 1px solid var(--color-paper-line);
+    border-bottom: 1px solid var(--color-steel-line);
   }
   .data-table td {
     padding: 1rem 1.25rem;
-    border-bottom: 1px solid var(--color-paper-line);
+    border-bottom: 1px solid var(--color-steel-line);
     vertical-align: middle;
     font-size: 0.95rem;
   }
   .data-table tbody tr:hover {
-    background-color: #fbf9f4;
+    background-color: var(--color-steel-line);
   }
   .data-table tbody tr:last-child td {
     border-bottom: 0;
@@ -239,11 +243,11 @@
     gap: 0.85rem;
   }
   .row-card {
-    background-color: #fff;
-    border: 1px solid var(--color-paper-line);
+    background-color: var(--color-steel);
+    border: 1px solid var(--color-steel-line);
     border-radius: 0.5rem;
     padding: 1.1rem 1.25rem;
-    box-shadow: 0 1px 2px rgba(33, 28, 22, 0.04);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
   }
   .row-card__title {
     font-size: 1.1rem;
@@ -264,19 +268,21 @@
   .row-card__actions {
     display: flex;
     gap: 0.75rem;
-    border-top: 1px solid var(--color-paper-line);
+    border-top: 1px solid var(--color-steel-line);
     padding-top: 0.85rem;
   }
   .row-card__actions > * {
     flex: 1;
   }
 
-  /* Signature: EU-style license plate badge */
+  /* Signature: EU-style license plate badge — stays a literal white plate
+     regardless of the app theme, so its text/border are pinned to
+     --color-paper (the dark end of the ramp) rather than --color-ink. */
   .plate-badge {
     display: inline-flex;
     align-items: stretch;
     flex-shrink: 0;
-    border: 1.5px solid var(--color-ink);
+    border: 1.5px solid var(--color-paper);
     border-radius: 0.25rem;
     overflow: hidden;
     background-color: #fff;
@@ -294,6 +300,7 @@
     white-space: nowrap;
     letter-spacing: 0.08em;
     padding: 0.4rem 0.65rem;
+    color: var(--color-paper);
   }
 
   /* Forms — inputs sit at 16px+ so iOS Safari won't zoom in on focus. */
@@ -326,7 +333,7 @@
     border-color: var(--color-accent);
   }
   .form-error-box {
-    background-color: #fbeae7;
+    background-color: rgba(226, 114, 91, 0.12);
     border: 1px solid var(--color-danger);
     color: var(--color-danger);
     border-radius: 0.25rem;
@@ -339,7 +346,7 @@
     flex-direction: column;
     gap: 0.15rem;
     padding: 0.75rem 0;
-    border-bottom: 1px solid var(--color-paper-line);
+    border-bottom: 1px solid var(--color-steel-line);
     font-size: 1rem;
   }
   .detail-row dt {
@@ -369,11 +376,11 @@
     justify-content: center;
     width: 2.75rem;
     height: 2.75rem;
-    color: #c9cdd1;
+    color: var(--color-muted);
     transition: color 0.15s ease;
   }
   .nav-search-link:hover {
-    color: #fff;
+    color: var(--color-ink);
   }
   .nav-search-link__icon {
     width: 1.25rem;
@@ -385,7 +392,7 @@
     overflow-y: auto;
   }
   .search-result + .search-result {
-    border-top: 1px solid var(--color-paper-line);
+    border-top: 1px solid var(--color-steel-line);
   }
   .search-result__link {
     display: flex;
@@ -405,5 +412,84 @@
     margin-top: 0.5rem;
     font-size: 0.9rem;
     color: var(--color-muted);
+  }
+
+  /* Sign-in split screen */
+  .auth-shell {
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+  }
+  @media (min-width: 900px) {
+    .auth-shell {
+      flex-direction: row;
+    }
+  }
+  .auth-panel {
+    flex: 1 1 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1.5rem;
+    background-color: var(--color-paper);
+  }
+  .auth-panel__inner {
+    width: 100%;
+    max-width: 26rem;
+  }
+  .auth-panel__form {
+    margin-top: 2.5rem;
+  }
+  .auth-form {
+    margin-top: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .auth-remember {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.95rem;
+    color: var(--color-muted);
+  }
+  .auth-remember input[type="checkbox"] {
+    width: 1.15rem;
+    height: 1.15rem;
+    accent-color: var(--color-accent);
+  }
+
+  .auth-illustration {
+    position: relative;
+    display: none;
+    flex: 1 1 50%;
+    background-color: var(--color-steel);
+    background-size: cover;
+    background-position: center;
+    border-left: 4px solid var(--color-accent);
+  }
+  @media (min-width: 900px) {
+    .auth-illustration {
+      display: block;
+    }
+  }
+  .auth-illustration__caption {
+    position: absolute;
+    left: 3rem;
+    right: 3rem;
+    bottom: 3rem;
+    color: var(--color-ink);
+  }
+  .auth-illustration__headline {
+    font-family: var(--font-display);
+    font-size: 2.25rem;
+    line-height: 1.05;
+    letter-spacing: 0.01em;
+  }
+  .auth-illustration__subhead {
+    margin-top: 0.5rem;
+    color: var(--color-muted);
+    font-size: 1rem;
+    max-width: 26rem;
   }
 }

@@ -1,13 +1,27 @@
-<h1 class="text-2xl font-bold mb-4"><%= @client.name %></h1>
+<%= render "shared/page_head", title: @client.name, eyebrow: t("clients.title") %>
 
-<p><strong><%= t("clients.fields.phone") %>:</strong> <%= @client.phone %></p>
+<div class="card p-6 max-w-2xl">
+  <dl>
+    <div class="detail-row">
+      <dt><%= t("clients.fields.phone") %></dt>
+      <dd class="cell-mono"><%= @client.phone %></dd>
+    </div>
+  </dl>
 
-<h2 class="text-xl font-semibold mt-6 mb-2"><%= t("cars.title") %></h2>
-<ul class="list-disc list-inside">
-  <% @client.cars.each do |car| %>
-    <li><%= link_to "#{car.brand} #{car.model} (#{car.plate})", car_path(car) %></li>
-  <% end %>
-</ul>
+  <h2 class="title-display text-2xl mt-8 mb-3"><%= t("cars.title") %></h2>
+  <ul class="space-y-2">
+    <% @client.cars.each do |car| %>
+      <li>
+        <%= link_to car_path(car), class: "inline-flex items-center gap-3 hover:text-[var(--color-accent)]" do %>
+          <%= plate_badge(car.plate) %>
+          <span><%= "#{car.brand} #{car.model}" %></span>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
 
-<%= link_to t("common.edit"), edit_client_path(@client), class: "inline-block mt-4 underline" %>
-<%= link_to t("common.back"), clients_path, class: "inline-block mt-4 ml-4 underline" %>
+  <div class="mt-8 flex gap-6">
+    <%= link_to t("common.edit"), edit_client_path(@client), class: "btn-text" %>
+    <%= link_to t("common.back"), clients_path, class: "btn-text" %>
+  </div>
+</div>

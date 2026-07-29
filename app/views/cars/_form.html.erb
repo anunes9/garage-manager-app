@@ -1,6 +1,6 @@
-<%= form_with model: car, class: "space-y-4" do |f| %>
+<%= form_with model: car, class: "card p-6 max-w-xl space-y-5" do |f| %>
   <% if car.errors.any? %>
-    <div class="text-red-700">
+    <div class="form-error-box">
       <ul>
         <% car.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -10,24 +10,24 @@
   <% end %>
 
   <div>
-    <%= f.label :client_id, t("cars.fields.client"), class: "block font-medium" %>
-    <%= f.collection_select :client_id, Client.order(:name), :id, :name, { prompt: true }, class: "border rounded px-2 py-1 w-full" %>
+    <%= f.label :client_id, t("cars.fields.client"), class: "field-label" %>
+    <%= f.collection_select :client_id, Client.order(:name), :id, :name, { prompt: true }, class: "field-input" %>
   </div>
 
   <div>
-    <%= f.label :brand, t("cars.fields.brand"), class: "block font-medium" %>
-    <%= f.text_field :brand, class: "border rounded px-2 py-1 w-full" %>
+    <%= f.label :brand, t("cars.fields.brand"), class: "field-label" %>
+    <%= f.text_field :brand, class: "field-input" %>
   </div>
 
   <div>
-    <%= f.label :model, t("cars.fields.model"), class: "block font-medium" %>
-    <%= f.text_field :model, class: "border rounded px-2 py-1 w-full" %>
+    <%= f.label :model, t("cars.fields.model"), class: "field-label" %>
+    <%= f.text_field :model, class: "field-input" %>
   </div>
 
   <div>
-    <%= f.label :plate, t("cars.fields.plate"), class: "block font-medium" %>
-    <%= f.text_field :plate, class: "border rounded px-2 py-1 w-full" %>
+    <%= f.label :plate, t("cars.fields.plate"), class: "field-label" %>
+    <%= f.text_field :plate, class: "field-input cell-mono" %>
   </div>
 
-  <%= f.submit class: "bg-blue-600 text-white px-4 py-2 rounded cursor-pointer" %>
+  <%= f.submit class: "btn-primary cursor-pointer w-full sm:w-auto" %>
 <% end %>

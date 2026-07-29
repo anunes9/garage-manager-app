@@ -1,25 +1,44 @@
-<h1 class="text-2xl font-bold mb-4"><%= t("clients.title") %></h1>
+<%= render "shared/page_head",
+      title: t("clients.title"),
+      eyebrow: t("clients.count", count: @clients.size),
+      cta_text: t("clients.new"),
+      cta_path: new_client_path %>
 
-<%= link_to t("clients.new"), new_client_path, class: "bg-blue-600 text-white px-4 py-2 rounded" %>
+<div class="row-card-list md:hidden">
+  <% @clients.each do |client| %>
+    <div class="row-card">
+      <div class="row-card__body">
+        <%= link_to client.name, client_path(client), class: "row-card__title" %>
+        <span class="row-card__meta cell-mono"><%= client.phone %></span>
+      </div>
+      <div class="row-card__actions">
+        <%= link_to t("common.edit"), edit_client_path(client), class: "btn-secondary" %>
+        <%= button_to t("common.delete"), client_path(client), method: :delete, class: "btn-danger w-full", form: { data: { turbo_confirm: t("common.confirm") } } %>
+      </div>
+    </div>
+  <% end %>
+</div>
 
-<table class="w-full mt-4 border-collapse">
-  <thead>
-    <tr class="text-left border-b">
-      <th class="py-2"><%= t("clients.fields.name") %></th>
-      <th class="py-2"><%= t("clients.fields.phone") %></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @clients.each do |client| %>
-      <tr class="border-b">
-        <td class="py-2"><%= link_to client.name, client_path(client) %></td>
-        <td class="py-2"><%= client.phone %></td>
-        <td class="py-2 text-right">
-          <%= link_to t("common.edit"), edit_client_path(client) %>
-          <%= button_to t("common.delete"), client_path(client), method: :delete, class: "bg-transparent border-0 p-0 text-red-700 underline cursor-pointer ml-2", form: { data: { turbo_confirm: t("common.confirm") } } %>
-        </td>
+<div class="card overflow-x-auto hidden md:block">
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th><%= t("clients.fields.name") %></th>
+        <th><%= t("clients.fields.phone") %></th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @clients.each do |client| %>
+        <tr>
+          <td><%= link_to client.name, client_path(client), class: "font-medium hover:text-[var(--color-accent)]" %></td>
+          <td class="cell-mono text-[var(--color-muted)]"><%= client.phone %></td>
+          <td class="cell-actions">
+            <%= link_to t("common.edit"), edit_client_path(client), class: "btn-text" %>
+            <%= button_to t("common.delete"), client_path(client), method: :delete, class: "btn-danger-text", form: { data: { turbo_confirm: t("common.confirm") } } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -111,6 +111,19 @@ en:
     password_heading: "Change Password"
     save_password: "Change Password"
     password_updated: "Password updated."
+  sessions:
+    title: "Sign In"
+    eyebrow: "Workshop Access"
+    welcome: "Welcome back"
+    subtitle: "Sign in to manage your clients, cars and repairs."
+    fields:
+      email: "Email address"
+      password: "Password"
+    remember_me: "Remember me for 2 weeks"
+    sign_in: "Sign in"
+    illustration:
+      headline: "Every car has a story."
+      subhead: "We track it — from first inspection to the last part replaced."
   common:
     back: "Back"
     edit: "Edit"

@@ -53,3 +53,5 @@ yarn-error.log*
 
 # Ignore Byebug command history file.
 .byebug_history
+
+.claude/

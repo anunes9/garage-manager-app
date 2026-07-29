@@ -31,7 +31,7 @@ RSpec.describe "Managing account settings", type: :system do
     click_on "Sign out"
     fill_in "Email", with: "manager@example.com"
     fill_in "Password", with: "newpassword456"
-    click_on "Log in"
+    click_on "Sign in"
 
     expect(page).to have_content("Clients")
   end

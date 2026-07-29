@@ -1,27 +1,47 @@
-<h1 class="text-2xl font-bold mb-4"><%= t("cars.title") %></h1>
+<%= render "shared/page_head",
+      title: t("cars.title"),
+      eyebrow: t("cars.count", count: @cars.size),
+      cta_text: t("cars.new"),
+      cta_path: new_car_path %>
 
-<%= link_to t("cars.new"), new_car_path, class: "bg-blue-600 text-white px-4 py-2 rounded" %>
+<div class="row-card-list md:hidden">
+  <% @cars.each do |car| %>
+    <div class="row-card">
+      <div class="row-card__body">
+        <%= plate_badge(car.plate) %>
+        <span class="row-card__title mt-1"><%= "#{car.brand} #{car.model}" %></span>
+        <%= link_to car.client.name, client_path(car.client), class: "row-card__meta" %>
+      </div>
+      <div class="row-card__actions">
+        <%= link_to t("common.edit"), edit_car_path(car), class: "btn-secondary" %>
+        <%= button_to t("common.delete"), car_path(car), method: :delete, class: "btn-danger w-full", form: { data: { turbo_confirm: t("common.confirm") } } %>
+      </div>
+    </div>
+  <% end %>
+</div>
 
-<table class="w-full mt-4 border-collapse">
-  <thead>
-    <tr class="text-left border-b">
-      <th class="py-2"><%= t("cars.fields.plate") %></th>
-      <th class="py-2"><%= "#{t('cars.fields.brand')} / #{t('cars.fields.model')}" %></th>
-      <th class="py-2"><%= t("cars.fields.client") %></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @cars.each do |car| %>
-      <tr class="border-b">
-        <td class="py-2"><%= link_to car.plate, car_path(car) %></td>
-        <td class="py-2"><%= "#{car.brand} #{car.model}" %></td>
-        <td class="py-2"><%= link_to car.client.name, client_path(car.client) %></td>
-        <td class="py-2 text-right">
-          <%= link_to t("common.edit"), edit_car_path(car) %>
-          <%= button_to t("common.delete"), car_path(car), method: :delete, class: "bg-transparent border-0 p-0 text-red-700 underline cursor-pointer ml-2", form: { data: { turbo_confirm: t("common.confirm") } } %>
-        </td>
+<div class="card overflow-x-auto hidden md:block">
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th><%= t("cars.fields.plate") %></th>
+        <th><%= "#{t('cars.fields.brand')} / #{t('cars.fields.model')}" %></th>
+        <th><%= t("cars.fields.client") %></th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @cars.each do |car| %>
+        <tr>
+          <td><%= link_to car_path(car) do %><%= plate_badge(car.plate) %><% end %></td>
+          <td><%= "#{car.brand} #{car.model}" %></td>
+          <td><%= link_to car.client.name, client_path(car.client), class: "hover:text-[var(--color-accent)]" %></td>
+          <td class="cell-actions">
+            <%= link_to t("common.edit"), edit_car_path(car), class: "btn-text" %>
+            <%= button_to t("common.delete"), car_path(car), method: :delete, class: "btn-danger-text", form: { data: { turbo_confirm: t("common.confirm") } } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -1,14 +1,28 @@
-<h1 class="text-2xl font-bold mb-4"><%= "#{@car.brand} #{@car.model}" %></h1>
+<%= render "shared/page_head", title: "#{@car.brand} #{@car.model}", eyebrow: t("cars.title") %>
 
-<p><strong><%= t("cars.fields.plate") %>:</strong> <%= @car.plate %></p>
-<p><strong><%= t("cars.fields.client") %>:</strong> <%= link_to @car.client.name, client_path(@car.client) %></p>
+<div class="card p-6 max-w-2xl">
+  <div class="mb-2"><%= plate_badge(@car.plate) %></div>
 
-<h2 class="text-xl font-semibold mt-6 mb-2"><%= t("repairs.title") %></h2>
-<ul class="list-disc list-inside">
-  <% @car.repairs.order(date: :desc).each do |repair| %>
-    <li><%= link_to "#{repair.date} — #{repair.total}€", repair_path(repair) %></li>
-  <% end %>
-</ul>
+  <dl>
+    <div class="detail-row">
+      <dt><%= t("cars.fields.client") %></dt>
+      <dd><%= link_to @car.client.name, client_path(@car.client), class: "hover:text-[var(--color-accent)]" %></dd>
+    </div>
+  </dl>
 
-<%= link_to t("common.edit"), edit_car_path(@car), class: "inline-block mt-4 underline" %>
-<%= link_to t("common.back"), cars_path, class: "inline-block mt-4 ml-4 underline" %>
+  <h2 class="title-display text-2xl mt-8 mb-3"><%= t("repairs.title") %></h2>
+  <ul class="space-y-2">
+    <% @car.repairs.order(date: :desc).each do |repair| %>
+      <li>
+        <%= link_to repair_path(repair), class: "hover:text-[var(--color-accent)]" do %>
+          <span class="cell-mono"><%= repair.date %></span> — <span class="cell-mono"><%= "#{repair.total}€" %></span>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+
+  <div class="mt-8 flex gap-6">
+    <%= link_to t("common.edit"), edit_car_path(@car), class: "btn-text" %>
+    <%= link_to t("common.back"), cars_path, class: "btn-text" %>
+  </div>
+</div>

@@ -36,7 +36,7 @@
           <span class="brand-mark">GARA<span>GEM</span></span>
           <div class="flex items-center gap-3 sm:gap-5">
             <%= render "shared/plate_search" %>
-            <%= link_to current_user.name.presence || current_user.email, edit_settings_path, class: "hidden sm:inline text-sm font-mono text-gray-400 hover:text-white" %>
+            <%= link_to current_user.name.presence || current_user.email, edit_settings_path, class: "hidden sm:inline text-sm font-mono text-[var(--color-muted)] hover:text-[var(--color-ink)]" %>
             <%= button_to t("nav.sign_out"), destroy_user_session_path, method: :delete, class: "nav-link bg-transparent border-0 p-0 cursor-pointer" %>
           </div>
         </div>
@@ -55,7 +55,7 @@
 
     <main class="container mx-auto mt-8 sm:mt-12 px-4 sm:px-6 pb-16">
       <% if notice %>
-        <p class="mb-6 px-4 py-3 rounded bg-[#eaf3ea] border border-[#3f7a4d] text-[#2a5c35] text-base"><%= notice %></p>
+        <p class="mb-6 px-4 py-3 rounded bg-[rgba(111,174,122,0.12)] border border-[#6fae7a] text-[#6fae7a] text-base"><%= notice %></p>
       <% end %>
       <% if alert %>
         <p class="mb-6 px-4 py-3 rounded form-error-box text-base"><%= alert %></p>

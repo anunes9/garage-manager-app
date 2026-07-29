@@ -1,6 +1,6 @@
-<%= form_with model: client, class: "space-y-4" do |f| %>
+<%= form_with model: client, class: "card p-6 max-w-xl space-y-5" do |f| %>
   <% if client.errors.any? %>
-    <div class="text-red-700">
+    <div class="form-error-box">
       <ul>
         <% client.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -10,14 +10,14 @@
   <% end %>
 
   <div>
-    <%= f.label :name, t("clients.fields.name"), class: "block font-medium" %>
-    <%= f.text_field :name, class: "border rounded px-2 py-1 w-full" %>
+    <%= f.label :name, t("clients.fields.name"), class: "field-label" %>
+    <%= f.text_field :name, class: "field-input" %>
   </div>
 
   <div>
-    <%= f.label :phone, t("clients.fields.phone"), class: "block font-medium" %>
-    <%= f.text_field :phone, class: "border rounded px-2 py-1 w-full" %>
+    <%= f.label :phone, t("clients.fields.phone"), class: "field-label" %>
+    <%= f.text_field :phone, class: "field-input" %>
   </div>
 
-  <%= f.submit class: "bg-blue-600 text-white px-4 py-2 rounded cursor-pointer" %>
+  <%= f.submit class: "btn-primary cursor-pointer w-full sm:w-auto" %>
 <% end %>

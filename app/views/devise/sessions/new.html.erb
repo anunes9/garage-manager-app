@@ -1,0 +1,47 @@
+<% content_for :title, t("sessions.title") %>
+
+<div class="auth-shell">
+  <div class="auth-panel">
+    <div class="auth-panel__inner">
+      <span class="brand-mark">GARA<span>GEM</span></span>
+
+      <div class="auth-panel__form">
+        <span class="eyebrow"><%= t("sessions.eyebrow") %></span>
+        <h1 class="title-display text-4xl"><%= t("sessions.welcome") %></h1>
+        <p class="mt-2 text-[var(--color-muted)]"><%= t("sessions.subtitle") %></p>
+
+        <% if alert %>
+          <p class="mt-6 px-4 py-3 rounded form-error-box text-base"><%= alert %></p>
+        <% end %>
+
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "auth-form" }) do |f| %>
+          <div>
+            <%= f.label :email, t("sessions.fields.email"), class: "field-label" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "field-input" %>
+          </div>
+
+          <div>
+            <%= f.label :password, t("sessions.fields.password"), class: "field-label" %>
+            <%= f.password_field :password, autocomplete: "current-password", class: "field-input" %>
+          </div>
+
+          <% if devise_mapping.rememberable? %>
+            <label class="auth-remember">
+              <%= f.check_box :remember_me %>
+              <%= t("sessions.remember_me") %>
+            </label>
+          <% end %>
+
+          <%= f.submit t("sessions.sign_in"), class: "btn-primary w-full justify-center cursor-pointer" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="auth-illustration" style="background-image: linear-gradient(to top, rgba(34,40,49,0.88), rgba(34,40,49,0.15) 45%, rgba(34,40,49,0.45)), url('<%= image_path("auth-bg.jpg") %>')">
+    <div class="auth-illustration__caption">
+      <p class="auth-illustration__headline"><%= t("sessions.illustration.headline") %></p>
+      <p class="auth-illustration__subhead"><%= t("sessions.illustration.subhead") %></p>
+    </div>
+  </div>
+</div>

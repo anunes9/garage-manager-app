@@ -82,6 +82,19 @@ pt:
     password_heading: "Alterar Palavra-passe"
     save_password: "Alterar Palavra-passe"
     password_updated: "Palavra-passe atualizada."
+  sessions:
+    title: "Iniciar Sessão"
+    eyebrow: "Acesso à Oficina"
+    welcome: "Bem-vindo de volta"
+    subtitle: "Inicie sessão para gerir os seus clientes, carros e reparações."
+    fields:
+      email: "Endereço de email"
+      password: "Palavra-passe"
+    remember_me: "Lembrar-me durante 2 semanas"
+    sign_in: "Iniciar sessão"
+    illustration:
+      headline: "Cada carro tem uma história."
+      subhead: "Nós registamo-la — da primeira inspeção à última peça substituída."
   common:
     back: "Voltar"
     edit: "Editar"

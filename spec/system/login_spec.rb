@@ -10,7 +10,7 @@ RSpec.describe "Logging in", type: :system do
 
     fill_in "Email", with: "manager@example.com"
     fill_in "Password", with: "password123"
-    click_on "Log in"
+    click_on "Sign in"
 
     expect(page).to have_current_path(clients_path)
     expect(page).to have_content("Clients")
@@ -22,7 +22,7 @@ RSpec.describe "Logging in", type: :system do
 
     fill_in "Email", with: "manager@example.com"
     fill_in "Password", with: "wrong-password"
-    click_on "Log in"
+    click_on "Sign in"
 
     expect(page).to have_content("Invalid email or password")
     expect(page).to have_no_css("nav")
@@ -32,7 +32,7 @@ RSpec.describe "Logging in", type: :system do
     visit new_user_session_path
     fill_in "Email", with: "manager@example.com"
     fill_in "Password", with: "password123"
-    click_on "Log in"
+    click_on "Sign in"
     expect(page).to have_content("Clients")
 
     click_on "Sign out"

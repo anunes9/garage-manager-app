@@ -1,27 +1,47 @@
-<h1 class="text-2xl font-bold mb-4"><%= t("repairs.title") %></h1>
+<%= render "shared/page_head",
+      title: t("repairs.title"),
+      eyebrow: t("repairs.count", count: @repairs.size),
+      cta_text: t("repairs.new"),
+      cta_path: new_repair_path %>
 
-<%= link_to t("repairs.new"), new_repair_path, class: "bg-blue-600 text-white px-4 py-2 rounded" %>
+<div class="row-card-list md:hidden">
+  <% @repairs.each do |repair| %>
+    <div class="row-card">
+      <div class="row-card__body">
+        <span class="row-card__title cell-mono"><%= repair.date %></span>
+        <%= plate_badge(repair.car.plate) %>
+        <span class="row-card__meta cell-mono"><%= "#{repair.total}€" %></span>
+      </div>
+      <div class="row-card__actions">
+        <%= link_to t("common.edit"), edit_repair_path(repair), class: "btn-secondary" %>
+        <%= button_to t("common.delete"), repair_path(repair), method: :delete, class: "btn-danger w-full", form: { data: { turbo_confirm: t("common.confirm") } } %>
+      </div>
+    </div>
+  <% end %>
+</div>
 
-<table class="w-full mt-4 border-collapse">
-  <thead>
-    <tr class="text-left border-b">
-      <th class="py-2"><%= t("repairs.fields.date") %></th>
-      <th class="py-2"><%= t("repairs.fields.car") %></th>
-      <th class="py-2"><%= t("repairs.fields.total") %></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @repairs.each do |repair| %>
-      <tr class="border-b">
-        <td class="py-2"><%= link_to repair.date, repair_path(repair) %></td>
-        <td class="py-2"><%= link_to repair.car.plate, car_path(repair.car) %></td>
-        <td class="py-2"><%= "#{repair.total}€" %></td>
-        <td class="py-2 text-right">
-          <%= link_to t("common.edit"), edit_repair_path(repair) %>
-          <%= button_to t("common.delete"), repair_path(repair), method: :delete, class: "bg-transparent border-0 p-0 text-red-700 underline cursor-pointer ml-2", form: { data: { turbo_confirm: t("common.confirm") } } %>
-        </td>
+<div class="card overflow-x-auto hidden md:block">
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th><%= t("repairs.fields.date") %></th>
+        <th><%= t("repairs.fields.car") %></th>
+        <th><%= t("repairs.fields.total") %></th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @repairs.each do |repair| %>
+        <tr>
+          <td class="cell-mono"><%= link_to repair.date, repair_path(repair), class: "hover:text-[var(--color-accent)]" %></td>
+          <td><%= link_to car_path(repair.car) do %><%= plate_badge(repair.car.plate) %><% end %></td>
+          <td class="cell-mono"><%= "#{repair.total}€" %></td>
+          <td class="cell-actions">
+            <%= link_to t("common.edit"), edit_repair_path(repair), class: "btn-text" %>
+            <%= button_to t("common.delete"), repair_path(repair), method: :delete, class: "btn-danger-text", form: { data: { turbo_confirm: t("common.confirm") } } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
