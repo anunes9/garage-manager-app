@@ -36,7 +36,7 @@
           <span class="brand-mark">GARA<span>GEM</span></span>
           <div class="flex items-center gap-3 sm:gap-5">
             <%= render "shared/plate_search" %>
-            <span class="hidden sm:inline text-sm font-mono text-gray-400"><%= current_user.email %></span>
+            <%= link_to current_user.name.presence || current_user.email, edit_settings_path, class: "hidden sm:inline text-sm font-mono text-gray-400 hover:text-white" %>
             <%= button_to t("nav.sign_out"), destroy_user_session_path, method: :delete, class: "nav-link bg-transparent border-0 p-0 cursor-pointer" %>
           </div>
         </div>

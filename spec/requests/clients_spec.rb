@@ -38,4 +38,18 @@ RSpec.describe "Clients", type: :request do
     get clients_path
     expect(response.body).to include(I18n.t("nav.search"))
   end
+
+  it "links the account identity in the nav to the settings page" do
+    sign_in create(:user, name: "Ana")
+    get clients_path
+    expect(response.body).to include(edit_settings_path)
+    expect(response.body).to include("Ana")
+  end
+
+  it "falls back to email in the nav when the user has no name" do
+    user = create(:user, name: nil)
+    sign_in user
+    get clients_path
+    expect(response.body).to include(user.email)
+  end
 end
