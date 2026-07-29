@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   end
   resources :repairs
   resource :settings, only: %i[edit update]
+  patch "settings/password", to: "settings#update_password", as: "settings_password"
 
   # Defines the root path route ("/")
   root "clients#index"

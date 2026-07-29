@@ -71,11 +71,17 @@ pt:
     fields:
       name: "Nome"
       language: "Idioma"
+      current_password: "Palavra-passe Atual"
+      new_password: "Nova Palavra-passe"
+      password_confirmation: "Confirmar Nova Palavra-passe"
     languages:
       en: "English"
       pt: "Português"
     save_profile: "Guardar Perfil"
     profile_updated: "Perfil atualizado."
+    password_heading: "Alterar Palavra-passe"
+    save_password: "Alterar Palavra-passe"
+    password_updated: "Palavra-passe atualizada."
   common:
     back: "Voltar"
     edit: "Editar"

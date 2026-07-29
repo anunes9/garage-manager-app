@@ -28,4 +28,38 @@
       <%= f.submit t("settings.save_profile"), class: "btn-primary cursor-pointer w-full sm:w-auto" %>
     <% end %>
   </div>
+
+  <div class="card p-6">
+    <h2 class="title-display text-2xl mb-4"><%= t("settings.password_heading") %></h2>
+
+    <% password_errors = %i[current_password password password_confirmation].flat_map { |attr| current_user.errors.full_messages_for(attr) } %>
+    <% if password_errors.any? %>
+      <div class="form-error-box mb-4">
+        <ul>
+          <% password_errors.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= form_with model: current_user, url: settings_password_path, method: :patch, class: "space-y-5" do |f| %>
+      <div>
+        <%= f.label :current_password, t("settings.fields.current_password"), class: "field-label" %>
+        <%= f.password_field :current_password, class: "field-input" %>
+      </div>
+
+      <div>
+        <%= f.label :password, t("settings.fields.new_password"), class: "field-label" %>
+        <%= f.password_field :password, class: "field-input" %>
+      </div>
+
+      <div>
+        <%= f.label :password_confirmation, t("settings.fields.password_confirmation"), class: "field-label" %>
+        <%= f.password_field :password_confirmation, class: "field-input" %>
+      </div>
+
+      <%= f.submit t("settings.save_password"), class: "btn-primary cursor-pointer w-full sm:w-auto" %>
+    <% end %>
+  </div>
 </div>

@@ -100,11 +100,17 @@ en:
     fields:
       name: "Name"
       language: "Language"
+      current_password: "Current Password"
+      new_password: "New Password"
+      password_confirmation: "Confirm New Password"
     languages:
       en: "English"
       pt: "Português"
     save_profile: "Save Profile"
     profile_updated: "Profile updated."
+    password_heading: "Change Password"
+    save_password: "Change Password"
+    password_updated: "Password updated."
   common:
     back: "Back"
     edit: "Edit"
