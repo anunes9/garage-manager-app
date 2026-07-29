@@ -39,7 +39,7 @@ module GarageManagerApp
     # Don't generate system test files.
     config.generators.system_tests = nil
 
-    config.i18n.available_locales = [:en, :pt]
+    config.i18n.available_locales = [ :en, :pt ]
     config.i18n.default_locale = :en
     # Fall back to English for any key a locale is missing, instead of rendering
     # literal "translation missing: ..." text.
