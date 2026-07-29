@@ -41,6 +41,7 @@
           </div>
         </div>
         <div class="flex items-center gap-5 sm:gap-6 flex-wrap">
+          <%= link_to t("nav.home"), root_path, class: "nav-link #{"is-active" if controller_name == "dashboard"}" %>
           <%= link_to t("nav.clients"), clients_path, class: "nav-link #{"is-active" if controller_name == "clients"}" %>
           <%= link_to t("nav.cars"), cars_path, class: "nav-link #{"is-active" if controller_name == "cars"}" %>
           <%= link_to t("nav.repairs"), repairs_path, class: "nav-link #{"is-active" if controller_name == "repairs"}" %>
