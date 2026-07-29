@@ -60,7 +60,9 @@
     min-height: 2.75rem;
     padding-block: 0.5rem;
     border-bottom: 2px solid transparent;
-    transition: color 0.15s ease, border-color 0.15s ease;
+    transition:
+      color 0.15s ease,
+      border-color 0.15s ease;
   }
   .nav-link:hover {
     color: var(--color-ink);
@@ -202,7 +204,9 @@
     padding: 0.65rem 1.25rem;
     border: 1.5px solid var(--color-steel-line);
     border-radius: 0.35rem;
-    transition: border-color 0.15s ease, background-color 0.15s ease;
+    transition:
+      border-color 0.15s ease,
+      background-color 0.15s ease;
   }
   .btn-secondary:hover {
     border-color: var(--color-ink);
@@ -223,7 +227,9 @@
     border: 1.5px solid var(--color-danger);
     border-radius: 0.35rem;
     cursor: pointer;
-    transition: background-color 0.15s ease, color 0.15s ease;
+    transition:
+      background-color 0.15s ease,
+      color 0.15s ease;
   }
   .btn-danger:hover {
     background-color: var(--color-danger);
@@ -345,6 +351,7 @@
   .plate-badge {
     display: inline-flex;
     align-items: stretch;
+    width: fit-content;
     flex-shrink: 0;
     border: 1.5px solid var(--color-paper);
     border-radius: 0.25rem;

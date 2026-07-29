@@ -8,9 +8,13 @@
   <% @repairs.each do |repair| %>
     <div class="row-card">
       <div class="row-card__body">
-        <span class="row-card__title cell-mono"><%= repair.date %></span>
-        <%= plate_badge(repair.car.plate) %>
-        <span class="row-card__meta cell-mono"><%= price_with_currency(repair.total) %></span>
+        <div class="flex justify-between">
+          <%= plate_badge(repair.car.plate) %>
+          <span class="row-card__title cell-mono"><%= repair.date %></span>
+        </div>
+
+        <span class="row-card__meta cell-mono"><%= repair.car.client.name %></span>
+        <span class="row-card__meta cell-mono">Total: <%= price_with_currency(repair.total) %></span>
       </div>
       <div class="row-card__actions">
         <%= link_to t("common.view"), repair_path(repair), class: "btn-secondary w-full" %>

@@ -1,7 +1,10 @@
 <%= render "shared/page_head", title: t("repairs.show_heading", date: @repair.date), eyebrow: t("repairs.title") %>
 
 <div class="card p-6 max-w-2xl">
-  <div class="mb-4"><%= plate_badge(@repair.car.plate) %></div>
+  <div class="flex justify-between items-center mb-4">
+    <%= plate_badge(@repair.car.plate) %>
+    <span class="row-card__mono"><%= @repair.car.brand %> <%= @repair.car.model %></span>
+  </div>
 
   <dl>
     <div class="detail-row">
