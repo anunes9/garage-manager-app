@@ -13,8 +13,7 @@
         <%= link_to car.client.name, client_path(car.client), class: "row-card__meta" %>
       </div>
       <div class="row-card__actions">
-        <%= link_to t("common.edit"), edit_car_path(car), class: "btn-secondary" %>
-        <%= button_to t("common.delete"), car_path(car), method: :delete, class: "btn-danger w-full", form: { data: { turbo_confirm: t("common.confirm") } } %>
+        <%= link_to t("common.view"), car_path(car), class: "btn-secondary w-full" %>
       </div>
     </div>
   <% end %>
@@ -32,13 +31,12 @@
     </thead>
     <tbody>
       <% @cars.each do |car| %>
-        <tr>
+        <tr class="cursor-pointer" data-controller="clickable-row" data-clickable-row-url-value="<%= car_path(car) %>" data-action="click->clickable-row#visit">
           <td><%= link_to car_path(car) do %><%= plate_badge(car.plate) %><% end %></td>
           <td><%= "#{car.brand} #{car.model}" %></td>
           <td><%= link_to car.client.name, client_path(car.client), class: "hover:text-[var(--color-accent)]" %></td>
           <td class="cell-actions">
-            <%= link_to t("common.edit"), edit_car_path(car), class: "btn-text" %>
-            <%= button_to t("common.delete"), car_path(car), method: :delete, class: "btn-danger-text", form: { data: { turbo_confirm: t("common.confirm") } } %>
+            <%= link_to t("common.view"), car_path(car), class: "btn-text" %>
           </td>
         </tr>
       <% end %>

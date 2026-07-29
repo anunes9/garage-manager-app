@@ -28,6 +28,16 @@ RSpec.describe "Managing repairs", type: :system do
     click_on "Create Repair"
 
     expect(page).to have_content("Repair created")
-    expect(page).to have_content("60.0€")
+    expect(page).to have_content("60.00€")
+  end
+
+  it "starts a new repair for a car from its show page with the car and today's date preselected" do
+    car = create(:car, plate: "66-FF-66")
+    visit car_path(car)
+
+    click_on "New Repair"
+
+    expect(page).to have_select("Car", selected: "66-FF-66")
+    expect(page).to have_field("Date", with: Date.current.iso8601)
   end
 end

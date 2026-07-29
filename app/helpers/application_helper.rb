@@ -4,4 +4,8 @@ module ApplicationHelper
       tag.span("", class: "plate-badge__band") + tag.span(plate, class: "plate-badge__text")
     end
   end
+
+  def price_with_currency(amount)
+    "#{number_with_precision(amount, precision: 2)}€"
+  end
 end

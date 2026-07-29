@@ -10,11 +10,10 @@
       <div class="row-card__body">
         <span class="row-card__title cell-mono"><%= repair.date %></span>
         <%= plate_badge(repair.car.plate) %>
-        <span class="row-card__meta cell-mono"><%= "#{repair.total}€" %></span>
+        <span class="row-card__meta cell-mono"><%= price_with_currency(repair.total) %></span>
       </div>
       <div class="row-card__actions">
-        <%= link_to t("common.edit"), edit_repair_path(repair), class: "btn-secondary" %>
-        <%= button_to t("common.delete"), repair_path(repair), method: :delete, class: "btn-danger w-full", form: { data: { turbo_confirm: t("common.confirm") } } %>
+        <%= link_to t("common.view"), repair_path(repair), class: "btn-secondary w-full" %>
       </div>
     </div>
   <% end %>
@@ -24,21 +23,20 @@
   <table class="data-table">
     <thead>
       <tr>
-        <th><%= t("repairs.fields.date") %></th>
         <th><%= t("repairs.fields.car") %></th>
+        <th><%= t("repairs.fields.date") %></th>
         <th><%= t("repairs.fields.total") %></th>
         <th></th>
       </tr>
     </thead>
     <tbody>
       <% @repairs.each do |repair| %>
-        <tr>
-          <td class="cell-mono"><%= link_to repair.date, repair_path(repair), class: "hover:text-[var(--color-accent)]" %></td>
+        <tr class="cursor-pointer" data-controller="clickable-row" data-clickable-row-url-value="<%= repair_path(repair) %>" data-action="click->clickable-row#visit">
           <td><%= link_to car_path(repair.car) do %><%= plate_badge(repair.car.plate) %><% end %></td>
-          <td class="cell-mono"><%= "#{repair.total}€" %></td>
+          <td class="cell-mono"><%= link_to repair.date, repair_path(repair), class: "hover:text-[var(--color-accent)]" %></td>
+          <td class="cell-mono"><%= price_with_currency(repair.total) %></td>
           <td class="cell-actions">
-            <%= link_to t("common.edit"), edit_repair_path(repair), class: "btn-text" %>
-            <%= button_to t("common.delete"), repair_path(repair), method: :delete, class: "btn-danger-text", form: { data: { turbo_confirm: t("common.confirm") } } %>
+            <%= link_to t("common.view"), repair_path(repair), class: "btn-text" %>
           </td>
         </tr>
       <% end %>

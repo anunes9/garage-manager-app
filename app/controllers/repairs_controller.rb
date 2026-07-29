@@ -9,7 +9,7 @@ class RepairsController < ApplicationController
   end
 
   def new
-    @repair = Repair.new
+    @repair = Repair.new(car_id: params[:car_id], date: Date.current)
     @repair.parts.build
   end
 

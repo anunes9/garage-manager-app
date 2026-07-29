@@ -18,7 +18,7 @@ class CarsController < ApplicationController
   end
 
   def new
-    @car = Car.new
+    @car = Car.new(client_id: params[:client_id])
   end
 
   def create
@@ -53,6 +53,6 @@ class CarsController < ApplicationController
   end
 
   def car_params
-    params.require(:car).permit(:brand, :model, :plate, :client_id)
+    params.require(:car).permit(:brand, :model, :plate, :vin, :motor, :notes, :client_id)
   end
 end

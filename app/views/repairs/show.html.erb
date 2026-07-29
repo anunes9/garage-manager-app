@@ -28,7 +28,7 @@
         <tr>
           <td><%= part.name %></td>
           <td class="cell-mono"><%= part.quantity %></td>
-          <td class="cell-mono"><%= "#{part.price}€" %></td>
+          <td class="cell-mono"><%= price_with_currency(part.price) %></td>
         </tr>
       <% end %>
     </tbody>
@@ -36,11 +36,12 @@
 
   <p class="mt-4 flex justify-between items-baseline">
     <span class="field-label mb-0"><%= t("repairs.fields.total") %></span>
-    <span class="title-display text-2xl"><%= "#{@repair.total}€" %></span>
+    <span class="title-display text-2xl"><%= price_with_currency(@repair.total) %></span>
   </p>
 
   <div class="mt-8 flex gap-6">
-    <%= link_to t("common.edit"), edit_repair_path(@repair), class: "btn-text" %>
     <%= link_to t("common.back"), repairs_path, class: "btn-text" %>
+    <%= link_to t("common.edit"), edit_repair_path(@repair), class: "btn-text" %>
+    <%= button_to t("common.delete"), repair_path(@repair), method: :delete, class: "btn-danger-text", form: { data: { turbo_confirm: t("common.confirm") } } %>
   </div>
 </div>

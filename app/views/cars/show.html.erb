@@ -8,21 +8,39 @@
       <dt><%= t("cars.fields.client") %></dt>
       <dd><%= link_to @car.client.name, client_path(@car.client), class: "hover:text-[var(--color-accent)]" %></dd>
     </div>
+    <div class="detail-row">
+      <dt><%= t("cars.fields.vin") %></dt>
+      <dd class="cell-mono"><%= @car.vin %></dd>
+    </div>
+    <div class="detail-row">
+      <dt><%= t("cars.fields.motor") %></dt>
+      <dd><%= @car.motor %></dd>
+    </div>
+    <div class="detail-row">
+      <dt><%= t("cars.fields.notes") %></dt>
+      <dd><%= @car.notes %></dd>
+    </div>
   </dl>
 
-  <h2 class="title-display text-2xl mt-8 mb-3"><%= t("repairs.title") %></h2>
-  <ul class="space-y-2">
+  <div class="mt-8 mb-3 flex items-center justify-between gap-4">
+    <h2 class="title-display text-2xl"><%= t("repairs.title") %></h2>
+    <%= link_to new_repair_path(car_id: @car.id), class: "btn-primary" do %>
+      <span aria-hidden="true">+</span> <%= t("repairs.new") %>
+    <% end %>
+  </div>
+  <ul class="space-y-4">
     <% @car.repairs.order(date: :desc).each do |repair| %>
       <li>
-        <%= link_to repair_path(repair), class: "hover:text-[var(--color-accent)]" do %>
-          <span class="cell-mono"><%= repair.date %></span> — <span class="cell-mono"><%= "#{repair.total}€" %></span>
+        <%= link_to repair_path(repair), class: "hover:text-[var(--color-accent)] flex flex-wrap justify-between border-b" do %>
+          <span class="cell-mono">Data: <%= repair.date %></span> <span class="cell-mono">Total: <%= price_with_currency(repair.total) %></span>
         <% end %>
       </li>
     <% end %>
   </ul>
 
   <div class="mt-8 flex gap-6">
-    <%= link_to t("common.edit"), edit_car_path(@car), class: "btn-text" %>
     <%= link_to t("common.back"), cars_path, class: "btn-text" %>
+    <%= link_to t("common.edit"), edit_car_path(@car), class: "btn-text" %>
+    <%= button_to t("common.delete"), car_path(@car), method: :delete, class: "btn-danger-text", form: { data: { turbo_confirm: t("common.confirm") } } %>
   </div>
 </div>

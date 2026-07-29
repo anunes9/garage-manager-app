@@ -12,8 +12,7 @@
         <span class="row-card__meta cell-mono"><%= client.phone %></span>
       </div>
       <div class="row-card__actions">
-        <%= link_to t("common.edit"), edit_client_path(client), class: "btn-secondary" %>
-        <%= button_to t("common.delete"), client_path(client), method: :delete, class: "btn-danger w-full", form: { data: { turbo_confirm: t("common.confirm") } } %>
+        <%= link_to t("common.view"), client_path(client), class: "btn-secondary w-full" %>
       </div>
     </div>
   <% end %>
@@ -30,12 +29,11 @@
     </thead>
     <tbody>
       <% @clients.each do |client| %>
-        <tr>
+        <tr class="cursor-pointer" data-controller="clickable-row" data-clickable-row-url-value="<%= client_path(client) %>" data-action="click->clickable-row#visit">
           <td><%= link_to client.name, client_path(client), class: "font-medium hover:text-[var(--color-accent)]" %></td>
           <td class="cell-mono text-[var(--color-muted)]"><%= client.phone %></td>
           <td class="cell-actions">
-            <%= link_to t("common.edit"), edit_client_path(client), class: "btn-text" %>
-            <%= button_to t("common.delete"), client_path(client), method: :delete, class: "btn-danger-text", form: { data: { turbo_confirm: t("common.confirm") } } %>
+            <%= link_to t("common.view"), client_path(client), class: "btn-text" %>
           </td>
         </tr>
       <% end %>

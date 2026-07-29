@@ -29,5 +29,20 @@
     <%= f.text_field :plate, class: "field-input cell-mono" %>
   </div>
 
+  <div>
+    <%= f.label :vin, t("cars.fields.vin"), class: "field-label" %>
+    <%= f.text_field :vin, class: "field-input cell-mono" %>
+  </div>
+
+  <div>
+    <%= f.label :motor, t("cars.fields.motor"), class: "field-label" %>
+    <%= f.text_field :motor, class: "field-input" %>
+  </div>
+
+  <div>
+    <%= f.label :notes, t("cars.fields.notes"), class: "field-label" %>
+    <%= f.text_area :notes, class: "field-input" %>
+  </div>
+
   <%= f.submit class: "btn-primary cursor-pointer w-full sm:w-auto" %>
 <% end %>
