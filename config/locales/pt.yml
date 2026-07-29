@@ -65,6 +65,17 @@ pt:
       quantity: "Quantidade"
       quantity_short: "Qtd"
       price: "Preço"
+  settings:
+    title: "Definições da Conta"
+    profile_heading: "Perfil"
+    fields:
+      name: "Nome"
+      language: "Idioma"
+    languages:
+      en: "English"
+      pt: "Português"
+    save_profile: "Guardar Perfil"
+    profile_updated: "Perfil atualizado."
   common:
     back: "Voltar"
     edit: "Editar"

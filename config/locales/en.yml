@@ -94,6 +94,17 @@ en:
       quantity: "Quantity"
       quantity_short: "Qty"
       price: "Price"
+  settings:
+    title: "Account Settings"
+    profile_heading: "Profile"
+    fields:
+      name: "Name"
+      language: "Language"
+    languages:
+      en: "English"
+      pt: "Português"
+    save_profile: "Save Profile"
+    profile_updated: "Profile updated."
   common:
     back: "Back"
     edit: "Edit"

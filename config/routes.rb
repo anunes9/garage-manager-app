@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     end
   end
   resources :repairs
+  resource :settings, only: %i[edit update]
 
   # Defines the root path route ("/")
   root "clients#index"
