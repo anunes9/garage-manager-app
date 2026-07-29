@@ -60,6 +60,8 @@ en:
       brand: "Brand"
       model: "Model"
       plate: "Plate"
+      year: "Year"
+      month: "Month"
       vin: "VIN"
       motor: "Engine"
       notes: "Notes"

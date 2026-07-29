@@ -31,6 +31,8 @@ pt:
       brand: "Marca"
       model: "Modelo"
       plate: "Matrícula"
+      year: "Ano"
+      month: "Mês"
       vin: "Nº de Chassis (VIN)"
       motor: "Motor"
       notes: "Notas"

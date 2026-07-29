@@ -30,6 +30,16 @@
   </div>
 
   <div>
+    <%= f.label :year, t("cars.fields.year"), class: "field-label" %>
+    <%= f.number_field :year, class: "field-input" %>
+  </div>
+
+  <div>
+    <%= f.label :month, t("cars.fields.month"), class: "field-label" %>
+    <%= f.number_field :month, class: "field-input" %>
+  </div>
+
+  <div>
     <%= f.label :vin, t("cars.fields.vin"), class: "field-label" %>
     <%= f.text_field :vin, class: "field-input cell-mono" %>
   </div>

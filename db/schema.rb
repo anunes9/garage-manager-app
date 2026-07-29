@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_07_29_134502) do
+ActiveRecord::Schema[8.1].define(version: 2026_07_29_211016) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -33,11 +33,13 @@ ActiveRecord::Schema[8.1].define(version: 2026_07_29_134502) do
     t.bigint "client_id", null: false
     t.datetime "created_at", null: false
     t.string "model"
+    t.integer "month"
     t.string "motor"
     t.text "notes"
     t.string "plate"
     t.datetime "updated_at", null: false
     t.string "vin"
+    t.integer "year"
     t.index ["client_id"], name: "index_cars_on_client_id"
     t.index ["plate"], name: "index_cars_on_plate", unique: true
   end

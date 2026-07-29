@@ -26,20 +26,27 @@ if Rails.env.development?
 
   cars = [
     { plate: "AA-11-BB", brand: "Toyota", model: "Corolla", vin: "JT2AE09W7M0123456", motor: "1.8 Hybrid",
-      notes: "Owner requests a courtesy call before any repair over 100€." },
-    { plate: "CC-22-DD", brand: "Renault", model: "Clio", vin: "VF15RB20A65234567", motor: "1.0 TCe" },
-    { plate: "EE-33-FF", brand: "Peugeot", model: "208", vin: "VF3CCYHZ6JT345678", motor: "1.2 PureTech" },
+      year: 2019, month: 3, notes: "Owner requests a courtesy call before any repair over 100€." },
+    { plate: "CC-22-DD", brand: "Renault", model: "Clio", vin: "VF15RB20A65234567", motor: "1.0 TCe",
+      year: 2021, month: 7 },
+    { plate: "EE-33-FF", brand: "Peugeot", model: "208", vin: "VF3CCYHZ6JT345678", motor: "1.2 PureTech",
+      year: 2022, month: 11 },
     { plate: "GG-44-HH", brand: "Fiat", model: "Panda", vin: "ZFA31200000456789", motor: "1.2 8V",
-      notes: "Known intermittent starter issue, keep an eye on it at each visit." },
-    { plate: "II-55-JJ", brand: "Volkswagen", model: "Golf", vin: "WVWZZZ1KZAW567890", motor: "2.0 TDI" },
-    { plate: "KK-66-LL", brand: "BMW", model: "Serie 3", vin: "WBA8E9C50GK678901", motor: "2.0 Diesel" },
-    { plate: "MM-77-NN", brand: "Opel", model: "Corsa", vin: "W0L0XCF6885789012", motor: "1.4 Petrol" }
+      year: 2017, month: 5, notes: "Known intermittent starter issue, keep an eye on it at each visit." },
+    { plate: "II-55-JJ", brand: "Volkswagen", model: "Golf", vin: "WVWZZZ1KZAW567890", motor: "2.0 TDI",
+      year: 2018, month: 9 },
+    { plate: "KK-66-LL", brand: "BMW", model: "Serie 3", vin: "WBA8E9C50GK678901", motor: "2.0 Diesel",
+      year: 2020, month: 1 },
+    { plate: "MM-77-NN", brand: "Opel", model: "Corsa", vin: "W0L0XCF6885789012", motor: "1.4 Petrol",
+      year: 2023, month: 4 }
   ].each_with_index.map do |attrs, index|
     Car.find_or_create_by!(plate: attrs[:plate]) do |car|
       car.brand = attrs[:brand]
       car.model = attrs[:model]
       car.vin = attrs[:vin]
       car.motor = attrs[:motor]
+      car.year = attrs[:year]
+      car.month = attrs[:month]
       car.notes = attrs[:notes]
       car.client = clients[index % clients.length]
     end

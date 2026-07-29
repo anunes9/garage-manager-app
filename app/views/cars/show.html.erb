@@ -9,6 +9,14 @@
       <dd><%= link_to @car.client.name, client_path(@car.client), class: "hover:text-[var(--color-accent)]" %></dd>
     </div>
     <div class="detail-row">
+      <dt><%= t("cars.fields.year") %></dt>
+      <dd class="cell-mono"><%= @car.year %></dd>
+    </div>
+    <div class="detail-row">
+      <dt><%= t("cars.fields.month") %></dt>
+      <dd class="cell-mono"><%= @car.month %></dd>
+    </div>
+    <div class="detail-row">
       <dt><%= t("cars.fields.vin") %></dt>
       <dd class="cell-mono"><%= @car.vin %></dd>
     </div>
