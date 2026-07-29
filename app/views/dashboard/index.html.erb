@@ -1,19 +1,19 @@
 <%= render "shared/page_head", title: t("dashboard.title"), eyebrow: t("dashboard.eyebrow") %>
 
 <div class="stat-grid">
-  <div class="card stat-card">
+  <div class="stat-card stat-card--brass">
     <span class="stat-card__value"><%= @clients_count %></span>
     <span class="stat-card__label"><%= t("dashboard.stats.clients") %></span>
   </div>
-  <div class="card stat-card">
+  <div class="stat-card stat-card--gunmetal">
     <span class="stat-card__value"><%= @cars_count %></span>
     <span class="stat-card__label"><%= t("dashboard.stats.cars") %></span>
   </div>
-  <div class="card stat-card">
+  <div class="stat-card stat-card--rust">
     <span class="stat-card__value"><%= @repairs_count %></span>
     <span class="stat-card__label"><%= t("dashboard.stats.repairs") %></span>
   </div>
-  <div class="card stat-card">
+  <div class="stat-card stat-card--oxide">
     <span class="stat-card__value"><%= @repairs_this_month_count %></span>
     <span class="stat-card__label"><%= t("dashboard.stats.repairs_this_month") %></span>
   </div>

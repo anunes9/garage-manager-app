@@ -116,23 +116,57 @@
       grid-template-columns: repeat(4, 1fr);
     }
   }
+  /* Stat cards borrow the workshop's own material palette — rust, brass,
+     gunmetal, oxide — rather than a generic SaaS gradient set. */
   .stat-card {
-    padding: 1.25rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+    border-radius: 1.25rem;
+    padding: 1.5rem 1.5rem 1.25rem;
+    min-height: 9rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #fbf3e8;
+    box-shadow: 0 10px 20px -10px rgba(0, 0, 0, 0.6);
+  }
+  .stat-card::before {
+    content: "";
+    position: absolute;
+    inset: -35% -35% auto auto;
+    width: 65%;
+    height: 65%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.16), transparent 70%);
+    pointer-events: none;
+  }
+  .stat-card--rust {
+    background: linear-gradient(150deg, #e2725b 0%, #953a24 100%);
+  }
+  .stat-card--brass {
+    background: linear-gradient(150deg, #ddac52 0%, #96661d 100%);
+  }
+  .stat-card--gunmetal {
+    background: linear-gradient(150deg, #4a7096 0%, #1f3a54 100%);
+  }
+  .stat-card--oxide {
+    background: linear-gradient(150deg, #7f9a68 0%, #435434 100%);
   }
   .stat-card__value {
+    position: relative;
     display: block;
     font-family: var(--font-display);
-    font-size: 2.5rem;
+    font-size: 3rem;
     line-height: 1;
   }
   .stat-card__label {
+    position: relative;
     display: block;
-    margin-top: 0.35rem;
+    margin-top: 0.5rem;
     font-family: var(--font-mono);
     font-size: 0.75rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--color-muted);
+    color: rgba(251, 243, 232, 0.85);
   }
 
   /* Buttons — sized for a thumb, not a cursor: 44px+ min height throughout. */
