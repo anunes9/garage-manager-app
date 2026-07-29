@@ -11,6 +11,7 @@ if Rails.env.development?
   User.find_or_create_by!(email: "manager@example.com") do |user|
     user.password = "password123"
     user.role = :garage_manager
+    user.notes = "Handles front-desk scheduling and walk-ins."
   end
 
   clients = [
@@ -24,17 +25,22 @@ if Rails.env.development?
   end
 
   cars = [
-    { plate: "AA-11-BB", brand: "Toyota", model: "Corolla" },
-    { plate: "CC-22-DD", brand: "Renault", model: "Clio" },
-    { plate: "EE-33-FF", brand: "Peugeot", model: "208" },
-    { plate: "GG-44-HH", brand: "Fiat", model: "Panda" },
-    { plate: "II-55-JJ", brand: "Volkswagen", model: "Golf" },
-    { plate: "KK-66-LL", brand: "BMW", model: "Serie 3" },
-    { plate: "MM-77-NN", brand: "Opel", model: "Corsa" }
+    { plate: "AA-11-BB", brand: "Toyota", model: "Corolla", vin: "JT2AE09W7M0123456", motor: "1.8 Hybrid",
+      notes: "Owner requests a courtesy call before any repair over 100€." },
+    { plate: "CC-22-DD", brand: "Renault", model: "Clio", vin: "VF15RB20A65234567", motor: "1.0 TCe" },
+    { plate: "EE-33-FF", brand: "Peugeot", model: "208", vin: "VF3CCYHZ6JT345678", motor: "1.2 PureTech" },
+    { plate: "GG-44-HH", brand: "Fiat", model: "Panda", vin: "ZFA31200000456789", motor: "1.2 8V",
+      notes: "Known intermittent starter issue, keep an eye on it at each visit." },
+    { plate: "II-55-JJ", brand: "Volkswagen", model: "Golf", vin: "WVWZZZ1KZAW567890", motor: "2.0 TDI" },
+    { plate: "KK-66-LL", brand: "BMW", model: "Serie 3", vin: "WBA8E9C50GK678901", motor: "2.0 Diesel" },
+    { plate: "MM-77-NN", brand: "Opel", model: "Corsa", vin: "W0L0XCF6885789012", motor: "1.4 Petrol" }
   ].each_with_index.map do |attrs, index|
     Car.find_or_create_by!(plate: attrs[:plate]) do |car|
       car.brand = attrs[:brand]
       car.model = attrs[:model]
+      car.vin = attrs[:vin]
+      car.motor = attrs[:motor]
+      car.notes = attrs[:notes]
       car.client = clients[index % clients.length]
     end
   end
