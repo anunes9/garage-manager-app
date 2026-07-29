@@ -5,15 +5,15 @@ require "rails_helper"
 RSpec.describe "Logging in", type: :system do
   let!(:user) { create(:user, email: "manager@example.com", password: "password123") }
 
-  it "signs in with valid credentials and lands on the clients index" do
+  it "signs in with valid credentials and lands on the dashboard" do
     visit new_user_session_path
 
     fill_in "Email", with: "manager@example.com"
     fill_in "Password", with: "password123"
     click_on "Sign in"
 
-    expect(page).to have_current_path(clients_path)
-    expect(page).to have_content("Clients")
+    expect(page).to have_current_path(root_path)
+    expect(page).to have_content("Dashboard")
     within("nav") { expect(page).to have_content("manager@example.com") }
   end
 

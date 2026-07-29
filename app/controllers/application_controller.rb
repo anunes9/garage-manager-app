@@ -8,10 +8,6 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   around_action :switch_locale
 
-  def after_sign_in_path_for(resource)
-    clients_path
-  end
-
   def switch_locale(&action)
     I18n.with_locale(current_user&.locale || I18n.default_locale, &action)
   end
