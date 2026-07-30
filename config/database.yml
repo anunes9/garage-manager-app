@@ -22,7 +22,6 @@ default: &default
   username: <%= ENV.fetch("DATABASE_USERNAME", "postgres") %>
   password: <%= ENV.fetch("DATABASE_PASSWORD", "postgres") %>
 
-
 development:
   <<: *default
   database: garage_manager_app_development
@@ -87,21 +86,19 @@ test:
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
 #
+# Railway's Postgres plugin provisions a single database and exposes it as
+# DATABASE_URL. Solid Cache/Queue/Cable share that same database, keeping to
+# their own tables via separate migration paths rather than separate databases.
 production:
   primary: &primary_production
     <<: *default
-    database: garage_manager_app_production
-    username: garage_manager_app
-    password: <%= ENV["GARAGE_MANAGER_APP_DATABASE_PASSWORD"] %>
+    url: <%= ENV["DATABASE_URL"] %>
   cache:
     <<: *primary_production
-    database: garage_manager_app_production_cache
     migrations_paths: db/cache_migrate
   queue:
     <<: *primary_production
-    database: garage_manager_app_production_queue
     migrations_paths: db/queue_migrate
   cable:
     <<: *primary_production
-    database: garage_manager_app_production_cable
     migrations_paths: db/cable_migrate

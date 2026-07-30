@@ -329,6 +329,10 @@
     font-size: 0.95rem;
     margin-top: 0.15rem;
   }
+  .row-card__mono {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+  }
   .row-card__body {
     display: flex;
     flex-direction: column;
