@@ -8,6 +8,16 @@ class Repair < ApplicationRecord
 
   before_save :calculate_total
 
+  # Ransack (used by ActiveAdmin's index filters) requires an explicit allowlist of
+  # searchable attributes/associations.
+  def self.ransackable_attributes(auth_object = nil)
+    %w[id date km notes total car_id created_at updated_at]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    %w[car parts]
+  end
+
   private
 
   def calculate_total
