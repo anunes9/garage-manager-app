@@ -26,6 +26,7 @@ RSpec.describe "ActiveAdmin user management", type: :system do
     visit "/admin/users"
     click_on "New User"
 
+    fill_in "Name", with: "New Manager"
     fill_in "Email", with: "new.manager@example.com"
     fill_in "user_password", with: "password123"
     fill_in "user_password_confirmation", with: "password123"
@@ -36,10 +37,22 @@ RSpec.describe "ActiveAdmin user management", type: :system do
 
     created = User.find_by(email: "new.manager@example.com")
     expect(created).to be_present
+    expect(created.name).to eq("New Manager")
     expect(created.role).to eq("garage_manager")
 
     visit "/admin/users"
     expect(page).to have_content("new.manager@example.com")
+  end
+
+  it "edits a user's name through the ActiveAdmin form" do
+    user = create(:user, name: "Old Name", email: "rename.me@example.com")
+
+    visit edit_admin_user_path(user)
+    fill_in "Name", with: "New Name"
+    click_on "Update User"
+
+    expect(page).to have_content("New Name")
+    expect(user.reload.name).to eq("New Name")
   end
 
   it "deletes a user through the ActiveAdmin index delete link" do

@@ -54,5 +54,5 @@
     <%= f.text_area :notes, class: "field-input" %>
   </div>
 
-  <%= f.submit class: "btn-primary cursor-pointer w-full sm:w-auto" %>
+  <%= f.submit(car.persisted? ? t("cars.update_button") : t("cars.create_button"), class: "btn-primary cursor-pointer w-full sm:w-auto") %>
 <% end %>

@@ -19,5 +19,5 @@
     <%= f.text_field :phone, class: "field-input" %>
   </div>
 
-  <%= f.submit class: "btn-primary cursor-pointer w-full sm:w-auto" %>
+  <%= f.submit(client.persisted? ? t("clients.update_button") : t("clients.create_button"), class: "btn-primary cursor-pointer w-full sm:w-auto") %>
 <% end %>

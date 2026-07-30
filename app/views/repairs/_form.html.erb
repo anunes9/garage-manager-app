@@ -47,5 +47,5 @@
     <button type="button" data-action="nested-form#add" class="btn-text"><%= t("repairs.add_part") %></button>
   </div>
 
-  <%= f.submit class: "btn-primary cursor-pointer w-full sm:w-auto" %>
+  <%= f.submit(repair.persisted? ? t("repairs.update_button") : t("repairs.create_button"), class: "btn-primary cursor-pointer w-full sm:w-auto") %>
 <% end %>
