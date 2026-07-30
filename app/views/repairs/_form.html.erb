@@ -1,0 +1,51 @@
+<%= form_with model: repair, class: "card p-6 max-w-xl space-y-5", data: { controller: "nested-form" } do |f| %>
+  <% if repair.errors.any? %>
+    <div class="form-error-box">
+      <ul>
+        <% repair.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= f.label :car_id, t("repairs.fields.car"), class: "field-label" %>
+    <%= f.collection_select :car_id, Car.order(:plate), :id, :plate, { prompt: true }, class: "field-input" %>
+  </div>
+
+  <div>
+    <%= f.label :date, t("repairs.fields.date"), class: "field-label" %>
+    <%= f.date_field :date, class: "field-input" %>
+  </div>
+
+  <div>
+    <%= f.label :km, t("repairs.fields.km"), class: "field-label" %>
+    <%= f.number_field :km, class: "field-input" %>
+  </div>
+
+  <div>
+    <%= f.label :notes, t("repairs.fields.notes"), class: "field-label" %>
+    <%= f.text_area :notes, class: "field-input" %>
+  </div>
+
+  <div>
+    <span class="field-label"><%= t("repairs.fields.parts") %></span>
+
+    <div data-nested-form-target="parts">
+      <%= f.fields_for :parts do |part_fields| %>
+        <%= render "part_fields", f: part_fields %>
+      <% end %>
+    </div>
+
+    <template data-nested-form-target="template">
+      <%= f.fields_for :parts, Part.new, child_index: "NEW_RECORD" do |part_fields| %>
+        <%= render "part_fields", f: part_fields %>
+      <% end %>
+    </template>
+
+    <button type="button" data-action="nested-form#add" class="btn-text"><%= t("repairs.add_part") %></button>
+  </div>
+
+  <%= f.submit class: "btn-primary cursor-pointer w-full sm:w-auto" %>
+<% end %>

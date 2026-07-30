@@ -1,0 +1,33 @@
+<%= render "shared/page_head", title: @client.name, eyebrow: t("clients.title") %>
+
+<div class="card p-6 max-w-2xl">
+  <dl>
+    <div class="detail-row">
+      <dt><%= t("clients.fields.phone") %></dt>
+      <dd class="cell-mono"><%= @client.phone %></dd>
+    </div>
+  </dl>
+
+  <div class="mt-8 mb-3 flex items-center justify-between gap-4">
+    <h2 class="title-display text-2xl"><%= t("cars.title") %></h2>
+    <%= link_to new_car_path(client_id: @client.id), class: "btn-primary" do %>
+      <span aria-hidden="true">+</span> <%= t("cars.new") %>
+    <% end %>
+  </div>
+  <ul class="space-y-2">
+    <% @client.cars.each do |car| %>
+      <li>
+        <%= link_to car_path(car), class: "inline-flex items-center gap-3 hover:text-[var(--color-accent)]" do %>
+          <%= plate_badge(car.plate) %>
+          <span><%= car.brand %> <%= car.model %><%= " (#{car.motor})" if car.motor.present? %></span>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+
+  <div class="mt-8 flex gap-6">
+    <%= link_to t("common.back"), clients_path, class: "btn-text" %>
+    <%= link_to t("common.edit"), edit_client_path(@client), class: "btn-text" %>
+    <%= button_to t("common.delete"), client_path(@client), method: :delete, class: "btn-danger-text", form: { data: { turbo_confirm: t("common.confirm") } } %>
+  </div>
+</div>

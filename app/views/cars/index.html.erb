@@ -1,0 +1,48 @@
+<%= render "shared/page_head",
+      title: t("cars.title"),
+      eyebrow: t("cars.count", count: @cars.size),
+      cta_text: t("cars.new"),
+      cta_path: new_car_path %>
+
+<div class="row-card-list md:hidden">
+  <% @cars.each do |car| %>
+    <div class="row-card">
+      <div class="row-card__body">
+        <div class="flex justify-between">
+          <%= plate_badge(car.plate) %>
+          <%= link_to car.client.name, client_path(car.client), class: "row-card__title" %>
+        </div>
+
+        <span class="row-card__mono"><%= car.brand %> <%= car.model %></span>
+      </div>
+      <div class="row-card__actions">
+        <%= link_to t("common.view"), car_path(car), class: "btn-secondary w-full" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="card overflow-x-auto hidden md:block">
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th><%= t("cars.fields.plate") %></th>
+        <th><%= t('cars.fields.brand') %> / <%= t('cars.fields.model') %></th>
+        <th><%= t("cars.fields.client") %></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @cars.each do |car| %>
+        <tr class="cursor-pointer" data-controller="clickable-row" data-clickable-row-url-value="<%= car_path(car) %>" data-action="click->clickable-row#visit">
+          <td><%= link_to car_path(car) do %><%= plate_badge(car.plate) %><% end %></td>
+          <td><%= car.brand %> <%= car.model %></td>
+          <td><%= link_to car.client.name, client_path(car.client), class: "hover:text-[var(--color-accent)]" %></td>
+          <td class="cell-actions">
+            <%= link_to t("common.view"), car_path(car), class: "btn-text" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

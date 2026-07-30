@@ -1,0 +1,118 @@
+pt:
+  nav:
+    clients: "Clientes"
+    cars: "Carros"
+    repairs: "Reparações"
+    admin: "Admin"
+    sign_out: "Sair"
+    search: "Pesquisar matrícula"
+  clients:
+    title: "Clientes"
+    count:
+      one: "%{count} cliente registado"
+      other: "%{count} clientes registados"
+    new: "Novo Cliente"
+    edit: "Editar Cliente"
+    fields:
+      name: "Nome"
+      phone: "Telefone"
+    created: "Cliente criado."
+    updated: "Cliente atualizado."
+    destroyed: "Cliente removido."
+  cars:
+    title: "Carros"
+    count:
+      one: "%{count} carro registado"
+      other: "%{count} carros registados"
+    new: "Novo Carro"
+    edit: "Editar Carro"
+    fields:
+      client: "Cliente"
+      brand: "Marca"
+      model: "Modelo"
+      plate: "Matrícula"
+      year: "Ano"
+      month: "Mês"
+      vin: "Nº de Chassis (VIN)"
+      motor: "Motor"
+      notes: "Notas"
+    search:
+      title: "Pesquisar por Matrícula"
+      placeholder: "Pesquisar por matrícula…"
+      prompt: "Escreva pelo menos 2 caracteres para pesquisar."
+      no_results: "Nenhum carro encontrado."
+    created: "Carro criado."
+    updated: "Carro atualizado."
+    destroyed: "Carro removido."
+  repairs:
+    title: "Reparações"
+    count:
+      one: "%{count} reparação registada"
+      other: "%{count} reparações registadas"
+    new: "Nova Reparação"
+    edit: "Editar Reparação"
+    show_heading: "Reparação de %{date}"
+    fields:
+      car: "Carro"
+      date: "Data"
+      km: "Km"
+      notes: "Notas"
+      parts: "Peças"
+      total: "Total"
+    add_part: "Adicionar Peça"
+    remove_part: "Remover"
+    created: "Reparação criada."
+    updated: "Reparação atualizada."
+    destroyed: "Reparação removida."
+  parts:
+    fields:
+      name: "Nome"
+      quantity: "Quantidade"
+      quantity_short: "Qtd"
+      price: "Preço"
+  dashboard:
+    title: "Painel"
+    eyebrow: "Resumo"
+    stats:
+      clients: "Clientes"
+      cars: "Carros"
+      repairs: "Reparações"
+      repairs_this_month: "Reparações Este Mês"
+    quick_actions: "Ações Rápidas"
+  settings:
+    title: "Definições da Conta"
+    profile_heading: "Perfil"
+    fields:
+      name: "Nome"
+      language: "Idioma"
+      current_password: "Palavra-passe Atual"
+      new_password: "Nova Palavra-passe"
+      password_confirmation: "Confirmar Nova Palavra-passe"
+    languages:
+      en: "English"
+      pt: "Português"
+    save_profile: "Guardar Perfil"
+    profile_updated: "Perfil atualizado."
+    password_heading: "Alterar Palavra-passe"
+    save_password: "Alterar Palavra-passe"
+    password_updated: "Palavra-passe atualizada."
+  sessions:
+    title: "Iniciar Sessão"
+    eyebrow: "Acesso à Oficina"
+    welcome: "Bem-vindo de volta"
+    subtitle: "Inicie sessão para gerir os seus clientes, carros e reparações."
+    fields:
+      email: "Endereço de email"
+      password: "Palavra-passe"
+    remember_me: "Lembrar-me durante 2 semanas"
+    sign_in: "Iniciar sessão"
+    illustration:
+      headline: "Cada carro tem uma história."
+      subhead: "Nós registamo-la — da primeira inspeção à última peça substituída."
+  common:
+    back: "Voltar"
+    view: "Ver"
+    edit: "Editar"
+    delete: "Eliminar"
+    confirm: "Tem a certeza?"
+    not_authorized: "Não autorizado"

@@ -1,0 +1,58 @@
+<%= form_with model: car, class: "card p-6 max-w-xl space-y-5" do |f| %>
+  <% if car.errors.any? %>
+    <div class="form-error-box">
+      <ul>
+        <% car.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= f.label :client_id, t("cars.fields.client"), class: "field-label" %>
+    <%= f.collection_select :client_id, Client.order(:name), :id, :name, { prompt: true }, class: "field-input" %>
+  </div>
+
+  <div>
+    <%= f.label :brand, t("cars.fields.brand"), class: "field-label" %>
+    <%= f.text_field :brand, class: "field-input" %>
+  </div>
+
+  <div>
+    <%= f.label :model, t("cars.fields.model"), class: "field-label" %>
+    <%= f.text_field :model, class: "field-input" %>
+  </div>
+
+  <div>
+    <%= f.label :plate, t("cars.fields.plate"), class: "field-label" %>
+    <%= f.text_field :plate, class: "field-input cell-mono" %>
+  </div>
+
+  <div>
+    <%= f.label :year, t("cars.fields.year"), class: "field-label" %>
+    <%= f.number_field :year, class: "field-input" %>
+  </div>
+
+  <div>
+    <%= f.label :month, t("cars.fields.month"), class: "field-label" %>
+    <%= f.number_field :month, class: "field-input" %>
+  </div>
+
+  <div>
+    <%= f.label :vin, t("cars.fields.vin"), class: "field-label" %>
+    <%= f.text_field :vin, class: "field-input cell-mono" %>
+  </div>
+
+  <div>
+    <%= f.label :motor, t("cars.fields.motor"), class: "field-label" %>
+    <%= f.text_field :motor, class: "field-input" %>
+  </div>
+
+  <div>
+    <%= f.label :notes, t("cars.fields.notes"), class: "field-label" %>
+    <%= f.text_area :notes, class: "field-input" %>
+  </div>
+
+  <%= f.submit class: "btn-primary cursor-pointer w-full sm:w-auto" %>
+<% end %>

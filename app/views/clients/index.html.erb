@@ -1,0 +1,42 @@
+<%= render "shared/page_head",
+      title: t("clients.title"),
+      eyebrow: t("clients.count", count: @clients.size),
+      cta_text: t("clients.new"),
+      cta_path: new_client_path %>
+
+<div class="row-card-list md:hidden">
+  <% @clients.each do |client| %>
+    <div class="row-card">
+      <div class="row-card__body">
+        <%= link_to client.name, client_path(client), class: "row-card__title" %>
+        <span class="row-card__meta cell-mono"><%= client.phone %></span>
+      </div>
+      <div class="row-card__actions">
+        <%= link_to t("common.view"), client_path(client), class: "btn-secondary w-full" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="card overflow-x-auto hidden md:block">
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th><%= t("clients.fields.name") %></th>
+        <th><%= t("clients.fields.phone") %></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @clients.each do |client| %>
+        <tr class="cursor-pointer" data-controller="clickable-row" data-clickable-row-url-value="<%= client_path(client) %>" data-action="click->clickable-row#visit">
+          <td><%= link_to client.name, client_path(client), class: "font-medium hover:text-[var(--color-accent)]" %></td>
+          <td class="cell-mono text-[var(--color-muted)]"><%= client.phone %></td>
+          <td class="cell-actions">
+            <%= link_to t("common.view"), client_path(client), class: "btn-text" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

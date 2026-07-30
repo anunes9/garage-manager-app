@@ -1,0 +1,147 @@
+# Files in the config/locales directory are used for internationalization and
+# are automatically loaded by Rails. If you want to use locales other than
+# English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t "hello"
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t("hello") %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more about the API, please read the Rails Internationalization guide
+# at https://guides.rubyonrails.org/i18n.html.
+#
+# Be aware that YAML interprets the following case-insensitive strings as
+# booleans: `true`, `false`, `on`, `off`, `yes`, `no`. Therefore, these strings
+# must be quoted to be interpreted as strings. For example:
+#
+#     en:
+#       "yes": yup
+#       enabled: "ON"
+
+en:
+  nav:
+    clients: "Clients"
+    cars: "Cars"
+    repairs: "Repairs"
+    admin: "Admin"
+    sign_out: "Sign out"
+    search: "Search plate"
+  clients:
+    title: "Clients"
+    count:
+      one: "%{count} client on file"
+      other: "%{count} clients on file"
+    new: "New Client"
+    edit: "Edit Client"
+    fields:
+      name: "Name"
+      phone: "Phone"
+    created: "Client created."
+    updated: "Client updated."
+    destroyed: "Client removed."
+  cars:
+    title: "Cars"
+    count:
+      one: "%{count} car on file"
+      other: "%{count} cars on file"
+    new: "New Car"
+    edit: "Edit Car"
+    fields:
+      client: "Client"
+      brand: "Brand"
+      model: "Model"
+      plate: "Plate"
+      year: "Year"
+      month: "Month"
+      vin: "VIN"
+      motor: "Engine"
+      notes: "Notes"
+    search:
+      title: "Search by Plate"
+      placeholder: "Search by plate…"
+      prompt: "Type at least 2 characters to search."
+      no_results: "No cars found."
+    created: "Car created."
+    updated: "Car updated."
+    destroyed: "Car removed."
+  repairs:
+    title: "Repairs"
+    count:
+      one: "%{count} job logged"
+      other: "%{count} jobs logged"
+    new: "New Repair"
+    edit: "Edit Repair"
+    show_heading: "Repair on %{date}"
+    fields:
+      car: "Car"
+      date: "Date"
+      km: "Km"
+      notes: "Notes"
+      parts: "Parts"
+      total: "Total"
+    add_part: "Add Part"
+    remove_part: "Remove"
+    created: "Repair created."
+    updated: "Repair updated."
+    destroyed: "Repair removed."
+  parts:
+    fields:
+      name: "Name"
+      quantity: "Quantity"
+      quantity_short: "Qty"
+      price: "Price"
+  dashboard:
+    title: "Dashboard"
+    eyebrow: "Overview"
+    stats:
+      clients: "Clients"
+      cars: "Cars"
+      repairs: "Repairs"
+      repairs_this_month: "Repairs This Month"
+    quick_actions: "Quick Actions"
+  settings:
+    title: "Account Settings"
+    profile_heading: "Profile"
+    fields:
+      name: "Name"
+      language: "Language"
+      current_password: "Current Password"
+      new_password: "New Password"
+      password_confirmation: "Confirm New Password"
+    languages:
+      en: "English"
+      pt: "Português"
+    save_profile: "Save Profile"
+    profile_updated: "Profile updated."
+    password_heading: "Change Password"
+    save_password: "Change Password"
+    password_updated: "Password updated."
+  sessions:
+    title: "Sign In"
+    eyebrow: "Workshop Access"
+    welcome: "Welcome back"
+    subtitle: "Sign in to manage your clients, cars and repairs."
+    fields:
+      email: "Email address"
+      password: "Password"
+    remember_me: "Remember me for 2 weeks"
+    sign_in: "Sign in"
+    illustration:
+      headline: "Every car has a story."
+      subhead: "We track it — from first inspection to the last part replaced."
+  common:
+    back: "Back"
+    view: "View"
+    edit: "Edit"
+    delete: "Delete"
+    confirm: "Are you sure?"
+    not_authorized: "Not authorized"

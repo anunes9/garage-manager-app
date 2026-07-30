@@ -1,0 +1,7 @@
+<div class="part-fields flex flex-wrap gap-2 mb-2 items-start" data-new-record="<%= f.object.new_record? %>">
+  <%= f.text_field :name, placeholder: t("parts.fields.name"), class: "field-input flex-1 min-w-[10rem]" %>
+  <%= f.number_field :quantity, placeholder: t("parts.fields.quantity_short"), class: "field-input w-20" %>
+  <%= f.number_field :price, step: "0.01", placeholder: t("parts.fields.price"), class: "field-input w-24" %>
+  <%= f.hidden_field :_destroy %>
+  <button type="button" data-action="nested-form#remove" class="btn-danger-text self-center"><%= t("repairs.remove_part") %></button>
+</div>

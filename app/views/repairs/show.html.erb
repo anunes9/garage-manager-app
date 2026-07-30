@@ -1,0 +1,50 @@
+<%= render "shared/page_head", title: t("repairs.show_heading", date: @repair.date), eyebrow: t("repairs.title") %>
+
+<div class="card p-6 max-w-2xl">
+  <div class="flex justify-between items-center mb-4">
+    <%= plate_badge(@repair.car.plate) %>
+    <span class="row-card__mono"><%= @repair.car.brand %> <%= @repair.car.model %></span>
+  </div>
+
+  <dl>
+    <div class="detail-row">
+      <dt><%= t("repairs.fields.km") %></dt>
+      <dd class="cell-mono"><%= @repair.km %></dd>
+    </div>
+    <div class="detail-row">
+      <dt><%= t("repairs.fields.notes") %></dt>
+      <dd><%= @repair.notes %></dd>
+    </div>
+  </dl>
+
+  <h2 class="title-display text-2xl mt-8 mb-3"><%= t("repairs.fields.parts") %></h2>
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th><%= t("parts.fields.name") %></th>
+        <th><%= t("parts.fields.quantity") %></th>
+        <th><%= t("parts.fields.price") %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @repair.parts.each do |part| %>
+        <tr>
+          <td><%= part.name %></td>
+          <td class="cell-mono"><%= part.quantity %></td>
+          <td class="cell-mono"><%= price_with_currency(part.price) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <p class="mt-4 flex justify-between items-baseline">
+    <span class="field-label mb-0"><%= t("repairs.fields.total") %></span>
+    <span class="title-display text-2xl"><%= price_with_currency(@repair.total) %></span>
+  </p>
+
+  <div class="mt-8 flex gap-6">
+    <%= link_to t("common.back"), repairs_path, class: "btn-text" %>
+    <%= link_to t("common.edit"), edit_repair_path(@repair), class: "btn-text" %>
+    <%= button_to t("common.delete"), repair_path(@repair), method: :delete, class: "btn-danger-text", form: { data: { turbo_confirm: t("common.confirm") } } %>
+  </div>
+</div>

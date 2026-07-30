@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for(:title) || "Garage Manager App" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Garage Manager App">
+    <meta name="mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
+    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
+
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <%# Explicit stylesheet names (rather than the :app bulk-include helper) so this
+        layout never picks up app/admin's ActiveAdmin stylesheet, which also compiles
+        into app/assets/builds. %>
+    <%= stylesheet_link_tag "application", "tailwind", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <% if user_signed_in? %>
+      <nav class="shell-nav px-4 sm:px-6 py-2">
+        <div class="flex items-center justify-between gap-4">
+          <%= link_to root_path, class: "brand-mark" do %>GARA<span>GEM</span><% end %>
+          <div class="flex items-center gap-3 sm:gap-5">
+            <%= link_to current_user.name.presence || current_user.email, edit_settings_path, class: "text-sm font-mono text-[var(--color-muted)] hover:text-[var(--color-ink)]" %>
+            <%= button_to t("nav.sign_out"), destroy_user_session_path, method: :delete, class: "nav-link bg-transparent border-0 p-0 cursor-pointer" %>
+          </div>
+        </div>
+        <div class="flex items-center gap-5 sm:gap-6 flex-wrap">
+          <%= link_to t("nav.clients"), clients_path, class: "nav-link #{"is-active" if controller_name == "clients"}" %>
+          <%= link_to t("nav.cars"), cars_path, class: "nav-link #{"is-active" if controller_name == "cars"}" %>
+          <%= link_to t("nav.repairs"), repairs_path, class: "nav-link #{"is-active" if controller_name == "repairs"}" %>
+          <%= render "shared/plate_search" %>
+          <% if current_user.admin? %>
+            <%# ActiveAdmin pages are jQuery/Rails-UJS driven and do not load Turbo, so
+                leave Turbo Drive out of the hand-off into the /admin namespace. %>
+            <%= link_to t("nav.admin"), "/admin", class: "nav-link", data: { turbo: false } %>
+          <% end %>
+        </div>
+      </nav>
+    <% end %>
+
+    <main class="container mx-auto mt-8 sm:mt-12 px-4 sm:px-6 pb-16">
+      <% if notice %>
+        <p class="mb-6 px-4 py-3 rounded bg-[rgba(111,174,122,0.12)] border border-[#6fae7a] text-[#6fae7a] text-base"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="mb-6 px-4 py-3 rounded form-error-box text-base"><%= alert %></p>
+      <% end %>
+      <%= yield %>
+    </main>
+  </body>
+</html>

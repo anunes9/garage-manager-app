@@ -1,0 +1,28 @@
+<%= render "shared/page_head", title: t("dashboard.title"), eyebrow: t("dashboard.eyebrow") %>
+
+<div class="stat-grid">
+  <div class="stat-card stat-card--brass">
+    <span class="stat-card__value"><%= @clients_count %></span>
+    <span class="stat-card__label"><%= t("dashboard.stats.clients") %></span>
+  </div>
+  <div class="stat-card stat-card--gunmetal">
+    <span class="stat-card__value"><%= @cars_count %></span>
+    <span class="stat-card__label"><%= t("dashboard.stats.cars") %></span>
+  </div>
+  <div class="stat-card stat-card--rust">
+    <span class="stat-card__value"><%= @repairs_count %></span>
+    <span class="stat-card__label"><%= t("dashboard.stats.repairs") %></span>
+  </div>
+  <div class="stat-card stat-card--oxide">
+    <span class="stat-card__value"><%= @repairs_this_month_count %></span>
+    <span class="stat-card__label"><%= t("dashboard.stats.repairs_this_month") %></span>
+  </div>
+</div>
+
+<h2 class="title-display text-2xl mb-4"><%= t("dashboard.quick_actions") %></h2>
+<div class="flex flex-wrap gap-4">
+  <%= link_to t("clients.new"), new_client_path, class: "btn-secondary w-full sm:w-auto" %>
+  <%= link_to t("cars.new"), new_car_path, class: "btn-secondary w-full sm:w-auto" %>
+  <%= link_to t("repairs.new"), new_repair_path, class: "btn-secondary w-full sm:w-auto" %>
+  <%= link_to t("nav.search"), search_cars_path, class: "btn-secondary w-full sm:w-auto" %>
+</div>
