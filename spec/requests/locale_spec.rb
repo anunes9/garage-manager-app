@@ -1,10 +1,10 @@
 require "rails_helper"
 
 RSpec.describe "Locale switching", type: :request do
-  it "renders English by default" do
+  it "renders Portuguese by default" do
     sign_in create(:user)
     get clients_path
-    expect(response.body).to include("Clients")
+    expect(response.body).to include("Clientes")
   end
 
   it "renders Portuguese for a user whose locale is pt" do

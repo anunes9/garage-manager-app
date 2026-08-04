@@ -31,7 +31,7 @@ RSpec.describe "ActiveAdmin user management", type: :system do
     fill_in "user_password", with: "password123"
     fill_in "user_password_confirmation", with: "password123"
     select "garage_manager", from: "Role"
-    click_on "Create User"
+    click_on "Criar User"
 
     expect(page).to have_content("new.manager@example.com")
 
@@ -49,7 +49,7 @@ RSpec.describe "ActiveAdmin user management", type: :system do
 
     visit edit_admin_user_path(user)
     fill_in "Name", with: "New Name"
-    click_on "Update User"
+    click_on "Atualizar User"
 
     expect(page).to have_content("New Name")
     expect(user.reload.name).to eq("New Name")
@@ -75,7 +75,7 @@ RSpec.describe "ActiveAdmin user management", type: :system do
     click_on "Logout"
 
     # Back at the Devise sign-in form, and really signed out.
-    expect(page).to have_field("Email")
+    expect(page).to have_field("Endereço de email")
     visit clients_path
     expect(page).to have_current_path(new_user_session_path)
   end

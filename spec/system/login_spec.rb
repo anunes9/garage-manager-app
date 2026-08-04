@@ -8,36 +8,36 @@ RSpec.describe "Logging in", type: :system do
   it "signs in with valid credentials and lands on the dashboard" do
     visit new_user_session_path
 
-    fill_in "Email", with: "manager@example.com"
-    fill_in "Password", with: "password123"
-    click_on "Sign in"
+    fill_in "Endereço de email", with: "manager@example.com"
+    fill_in "Palavra-passe", with: "password123"
+    click_on "Iniciar sessão"
 
     expect(page).to have_current_path(root_path)
-    expect(page).to have_content("Dashboard")
+    expect(page).to have_content("Painel")
     within("nav") { expect(page).to have_content("manager@example.com") }
   end
 
   it "shows an error and stays signed out with a wrong password" do
     visit new_user_session_path
 
-    fill_in "Email", with: "manager@example.com"
-    fill_in "Password", with: "wrong-password"
-    click_on "Sign in"
+    fill_in "Endereço de email", with: "manager@example.com"
+    fill_in "Palavra-passe", with: "wrong-password"
+    click_on "Iniciar sessão"
 
-    expect(page).to have_content("Invalid email or password")
+    expect(page).to have_content("Email ou palavra-passe inválidos")
     expect(page).to have_no_css("nav")
   end
 
   it "signs out again" do
     visit new_user_session_path
-    fill_in "Email", with: "manager@example.com"
-    fill_in "Password", with: "password123"
-    click_on "Sign in"
-    expect(page).to have_content("Clients")
+    fill_in "Endereço de email", with: "manager@example.com"
+    fill_in "Palavra-passe", with: "password123"
+    click_on "Iniciar sessão"
+    expect(page).to have_content("Clientes")
 
-    click_on "Sign out"
+    click_on "Sair"
 
-    expect(page).to have_field("Email")
+    expect(page).to have_field("Endereço de email")
     expect(page).to have_no_css("nav")
   end
 end

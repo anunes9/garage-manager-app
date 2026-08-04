@@ -11,7 +11,7 @@ RSpec.describe "ActiveAdmin clients/cars/repairs management", type: :system do
 
     fill_in "Name", with: "New Client"
     fill_in "Phone", with: "912345678"
-    click_on "Create Client"
+    click_on "Criar Client"
 
     expect(page).to have_content("Client was successfully created")
     expect(page).to have_content("New Client")
@@ -41,7 +41,7 @@ RSpec.describe "ActiveAdmin clients/cars/repairs management", type: :system do
     fill_in "Brand", with: "Honda"
     fill_in "Model", with: "Civic"
     fill_in "Plate", with: "ZZ-99-ZZ"
-    click_on "Create Car"
+    click_on "Criar Car"
 
     expect(page).to have_content("Car was successfully created")
     expect(page).to have_content("ZZ-99-ZZ")
@@ -65,7 +65,7 @@ RSpec.describe "ActiveAdmin clients/cars/repairs management", type: :system do
       fill_in "Quantity", with: "2"
       fill_in "Price", with: "10.5"
     end
-    click_on "Create Repair"
+    click_on "Criar Repair"
 
     expect(page).to have_content("Repair was successfully created")
     expect(page).to have_content("Oil filter")

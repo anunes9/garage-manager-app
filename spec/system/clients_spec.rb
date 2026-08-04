@@ -6,11 +6,11 @@ RSpec.describe "Managing clients", type: :system do
   it "creates a client" do
     visit new_client_path
 
-    fill_in "Name", with: "Carol"
-    fill_in "Phone", with: "912345678"
-    click_on "Create Client"
+    fill_in "Nome", with: "Carol"
+    fill_in "Telefone", with: "912345678"
+    click_on "Criar Cliente"
 
-    expect(page).to have_content("Client created")
+    expect(page).to have_content("Cliente criado")
     expect(page).to have_content("Carol")
   end
 end

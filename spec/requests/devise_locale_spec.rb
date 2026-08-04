@@ -1,17 +1,17 @@
 require "rails_helper"
 
 RSpec.describe "Devise pages before sign-in", type: :request do
-  it "renders the sign-in page in English (no current_user yet to read a locale from)" do
+  it "renders the sign-in page in the default locale (no current_user yet to read a locale from)" do
     get new_user_session_path
 
     expect(response).to have_http_status(:ok)
     expect(response.body).not_to include("translation missing")
   end
 
-  it "renders an English message for a failed sign-in" do
+  it "renders a Portuguese message for a failed sign-in" do
     post user_session_path, params: { user: { email: "nobody@example.com", password: "wrong" } }
 
-    expect(response.body).to include("Invalid email or password.")
+    expect(response.body).to include("Email ou palavra-passe inválidos.")
   end
 
   it "falls back to English rather than rendering 'translation missing'" do
