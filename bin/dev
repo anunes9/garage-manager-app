@@ -13,4 +13,11 @@ export PORT="${PORT:-3000}"
 export RUBY_DEBUG_OPEN="true"
 export RUBY_DEBUG_LAZY="true"
 
+# Work around a macOS crash ("+[NSNumber initialize] may have been in
+# progress ... when fork() was called") when Puma forks the Solid Queue
+# supervisor (SOLID_QUEUE_IN_PUMA=true).
+if [ "$(uname)" = "Darwin" ]; then
+  export OBJC_DISABLE_INITIALIZE_FORK_SAFETY="${OBJC_DISABLE_INITIALIZE_FORK_SAFETY:-YES}"
+fi
+
 exec foreman start -f Procfile.dev "$@"
