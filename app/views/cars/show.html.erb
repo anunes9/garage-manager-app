@@ -1,6 +1,6 @@
 <%= render "shared/page_head", title: "#{@car.brand} #{@car.model}", eyebrow: t("cars.title") %>
 
-<div class="card px-4 py-6 max-w-2xl">
+<div class="card card-w">
   <div class="mb-2"><%= plate_badge(@car.plate) %></div>
 
   <dl>
@@ -37,10 +37,10 @@
     <% end %>
   </div>
   <ul class="space-y-4">
-    <% @car.repairs.order(date: :desc).each do |repair| %>
+    <% @car.repairs.order(date: :desc).each.with_index(1) do |repair, index| %>
       <li>
         <%= link_to repair_path(repair), class: "hover:text-[var(--color-accent)] flex flex-wrap justify-between border-b" do %>
-          <span class="cell-mono">Data: <%= repair.date %></span> <span class="cell-mono">Total: <%= price_with_currency(repair.total) %></span>
+          <span class="cell-mono"><%= index %>. Data: <%= repair.date %></span> <span class="cell-mono">Total: <%= price_with_currency(repair.total) %></span>
         <% end %>
       </li>
     <% end %>

@@ -13,6 +13,10 @@ RSpec.describe Client, type: :model do
     expect(build(:client, phone: "123")).not_to be_valid
   end
 
+  it "is valid without a phone" do
+    expect(build(:client, phone: nil)).to be_valid
+  end
+
   it "destroys its cars when destroyed" do
     client = create(:client)
     car = create(:car, client: client)

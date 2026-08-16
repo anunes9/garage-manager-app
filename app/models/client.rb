@@ -2,7 +2,7 @@ class Client < ApplicationRecord
   has_many :cars, dependent: :destroy
 
   validates :name, presence: true
-  validates :phone, presence: true, length: { is: 9 }
+  validates :phone, length: { is: 9 }, allow_blank: true
 
   # Ransack (used by ActiveAdmin's index filters) requires an explicit allowlist of
   # searchable attributes/associations.
